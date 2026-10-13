@@ -12,7 +12,7 @@
   :root{
     --bg:#fbf5f1; --bg-2:#f6e7e3; --card:#fff; --ink:#2b2226; --muted:#6f6266;
     --accent:#c2557a; --accent-ink:#fff; --accent-soft:#f3d6e0; --leaf:#5f7f5a; --line:#ecdcd8;
-    --wa:#25d366; --wa-ink:#0b3d1f;
+    --warn:#b3261e; --wa:#25d366; --wa-ink:#0b3d1f;
     --radius:18px; --serif:"Playfair Display",Georgia,serif;
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
@@ -96,6 +96,54 @@
   .steps li{counter-increment:s;display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
   .steps li::before{content:counter(s);font:700 1.1rem var(--serif);width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
 
+
+  /* Arma tu ramo */
+  .build{background:var(--card);border-block:1px solid var(--line)}
+  .sub{color:var(--muted);margin:.4em 0 0;max-width:38em}
+  .sub-h{font-size:1.35rem;margin:36px 0 14px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .sub-h small{font:500 .85rem var(--sans);color:var(--muted)}
+  .budget{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+  .budget>label{font-weight:700}
+  .money{display:flex;align-items:center;border:2px solid var(--accent);border-radius:12px;background:var(--card);padding-left:.8em;font-weight:700;font-size:1.2rem}
+  .money input{font:inherit;width:6.5em;border:0;background:transparent;color:var(--ink);padding:.45em .6em;font-variant-numeric:tabular-nums}
+  .money input:focus{outline:none}
+  .money:focus-within{outline:3px solid var(--leaf);outline-offset:2px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chips button{font:600 .9rem var(--sans);border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:.45em .9em;cursor:pointer;transition:border-color .2s}
+  .chips button:hover,.chips button[aria-pressed=true]{border-color:var(--accent);color:var(--accent)}
+  .budget small{color:var(--muted);flex-basis:100%}
+  #b-err{color:var(--warn);font-weight:600;flex-basis:100%;margin:0}
+  .sugs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+  .sug{border:1px solid var(--line);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column;gap:8px;background:var(--bg)}
+  .sug h4{font:700 1.15rem var(--serif);margin:0;display:flex;gap:8px;align-items:center}
+  .sug ul{margin:0;padding:0;list-style:none;color:var(--muted);font-size:.92rem}
+  .sug .tot{font-weight:700;font-variant-numeric:tabular-nums;margin-top:auto}
+  .sug .tot small{font-weight:400;color:var(--leaf)}
+  .sug .acts{display:grid;gap:8px}
+  .ghost{background:transparent;color:var(--accent);border:2px solid var(--accent);padding:.55em 1em;font-size:.9rem}
+  .ghost:hover{box-shadow:none;background:var(--accent-soft)}
+  .vacio{color:var(--muted);margin:0}
+  .flores{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}
+  .flores li{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--bg);transition:border-color .2s}
+  .flores li.on{border-color:var(--accent)}
+  .fe{font-size:1.8rem;width:44px;height:44px;border-radius:50%;background:var(--bg-2);display:grid;place-items:center;flex:none}
+  .fn{flex:1;min-width:0;font-weight:600;line-height:1.3}
+  .fn small{display:block;font-weight:400;color:var(--muted);font-variant-numeric:tabular-nums}
+  .step{display:flex;align-items:center;gap:6px}
+  .step button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font:700 1.1rem var(--sans);cursor:pointer;display:grid;place-items:center}
+  .step button:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+  .step button:disabled{opacity:.35;cursor:not-allowed}
+  .step output{min-width:1.6em;text-align:center;font-weight:700;font-variant-numeric:tabular-nums}
+  .resumen{position:sticky;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:16;margin-top:16px;background:var(--card);border:2px solid var(--accent);border-radius:var(--radius);padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:10px 16px;align-items:center;box-shadow:0 16px 40px -20px rgb(43 34 38 / .45)}
+  .resumen p{margin:0;font-variant-numeric:tabular-nums;min-width:0}
+  .resumen p b{font-size:1.15rem}
+  .resumen p.over{color:var(--warn)}
+  .bar{grid-column:1/-1;height:8px;border-radius:999px;background:var(--bg-2);overflow:hidden}
+  .bar i{display:block;height:100%;width:0;background:var(--leaf);transition:width .25s}
+  .bar i.over{background:var(--warn)}
+  .resumen .wa[aria-disabled=true]{opacity:.45;pointer-events:none}
+  @media (max-width:560px){.resumen{grid-template-columns:1fr}.resumen .wa{justify-content:center}}
+
   /* Registro */
   .join{background:linear-gradient(135deg,var(--accent-soft),var(--bg-2))}
   .join .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
@@ -128,9 +176,9 @@
     <a class="logo" href="#">Pétalo <span>&</span> Rama</a>
     <ul class="menu">
       <li><a href="#categorias">Categorías</a></li>
+      <li><a href="#arma">Arma tu ramo</a></li>
       <li><a href="#productos">Ramos</a></li>
-      <li><a href="#unete">Ofertas</a></li>
-      <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#contacto">Contacto</a></li>
     </ul>
     <a class="btn wa" data-ramo="" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg><span>Escríbenos</span></a>
   </nav>
@@ -143,7 +191,7 @@
         <span class="demo-tag">Florería de barrio</span>
         <h1>Flores frescas que dicen <em>lo que sientes</em></h1>
         <p>Ramos armados a mano cada mañana y entregados el mismo día, para cumpleaños, aniversarios o simplemente porque sí.</p>
-        <a class="btn" href="#productos">Ver ramos</a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn" href="#productos">Ver ramos</a><a class="btn ghost" href="#arma">Arma tu ramo</a></div>
       </div>
       <div class="hero-art" role="img" aria-label="Ilustración de un ramo de flores">💐</div>
     </div>
@@ -193,6 +241,47 @@
     </div>
   </section>
 
+  <section class="block build" id="arma">
+    <div class="wrap">
+      <div class="head"><div><h2>Arma tu ramo</h2><p class="sub">Dinos cuánto quieres gastar y te mostramos las mejores opciones, o elige tú flor por flor. El ramo nunca pasa de tu presupuesto.</p></div><span class="demo-tag">Precios de ejemplo</span></div>
+
+      <div class="budget">
+        <label for="presupuesto">Mi presupuesto</label>
+        <div class="money"><span aria-hidden="true">$</span><input id="presupuesto" type="number" inputmode="numeric" min="150" max="20000" step="50" value="500"></div>
+        <div class="chips" role="group" aria-label="Presupuestos rápidos">
+          <button type="button" data-b="300">$300</button><button type="button" data-b="500" aria-pressed="true">$500</button><button type="button" data-b="800">$800</button><button type="button" data-b="1200">$1,200</button>
+        </div>
+        <small>El precio incluye armado y envoltura ($60).</small>
+        <p id="b-err" role="alert" hidden></p>
+      </div>
+
+      <h3 class="sub-h">Opciones para <span id="b-label">$500</span></h3>
+      <div class="sugs" id="sugs"></div>
+
+      <div class="elige">
+      <h3 class="sub-h">O elige tú tus flores <small>precio por tallo</small></h3>
+      <ul class="flores" id="flores">
+          <li data-flor="Rosa" data-precio="35"><span class="fe" aria-hidden="true">🌹</span><span class="fn">Rosa<small>$35 por tallo</small></span><div class="step"><button type="button" class="menos" aria-label="Quitar Rosa">−</button><output aria-live="polite">0</output><button type="button" class="mas" aria-label="Agregar Rosa">+</button></div></li>
+          <li data-flor="Girasol" data-precio="40"><span class="fe" aria-hidden="true">🌻</span><span class="fn">Girasol<small>$40 por tallo</small></span><div class="step"><button type="button" class="menos" aria-label="Quitar Girasol">−</button><output aria-live="polite">0</output><button type="button" class="mas" aria-label="Agregar Girasol">+</button></div></li>
+          <li data-flor="Tulipán" data-precio="55"><span class="fe" aria-hidden="true">🌷</span><span class="fn">Tulipán<small>$55 por tallo</small></span><div class="step"><button type="button" class="menos" aria-label="Quitar Tulipán">−</button><output aria-live="polite">0</output><button type="button" class="mas" aria-label="Agregar Tulipán">+</button></div></li>
+          <li data-flor="Lirio" data-precio="45"><span class="fe" aria-hidden="true">💮</span><span class="fn">Lirio<small>$45 por tallo</small></span><div class="step"><button type="button" class="menos" aria-label="Quitar Lirio">−</button><output aria-live="polite">0</output><button type="button" class="mas" aria-label="Agregar Lirio">+</button></div></li>
+          <li data-flor="Gerbera" data-precio="25"><span class="fe" aria-hidden="true">🌺</span><span class="fn">Gerbera<small>$25 por tallo</small></span><div class="step"><button type="button" class="menos" aria-label="Quitar Gerbera">−</button><output aria-live="polite">0</output><button type="button" class="mas" aria-label="Agregar Gerbera">+</button></div></li>
+          <li data-flor="Clavel" data-precio="18"><span class="fe" aria-hidden="true">🏵️</span><span class="fn">Clavel<small>$18 por tallo</small></span><div class="step"><button type="button" class="menos" aria-label="Quitar Clavel">−</button><output aria-live="polite">0</output><button type="button" class="mas" aria-label="Agregar Clavel">+</button></div></li>
+          <li data-flor="Alstroemeria" data-precio="20"><span class="fe" aria-hidden="true">🌼</span><span class="fn">Alstroemeria<small>$20 por tallo</small></span><div class="step"><button type="button" class="menos" aria-label="Quitar Alstroemeria">−</button><output aria-live="polite">0</output><button type="button" class="mas" aria-label="Agregar Alstroemeria">+</button></div></li>
+          <li data-flor="Peonía" data-precio="90"><span class="fe" aria-hidden="true">🌸</span><span class="fn">Peonía<small>$90 por tallo</small></span><div class="step"><button type="button" class="menos" aria-label="Quitar Peonía">−</button><output aria-live="polite">0</output><button type="button" class="mas" aria-label="Agregar Peonía">+</button></div></li>
+          <li data-flor="Nube (gypsophila)" data-precio="15"><span class="fe" aria-hidden="true">☁️</span><span class="fn">Nube (gypsophila)<small>$15 por tallo</small></span><div class="step"><button type="button" class="menos" aria-label="Quitar Nube (gypsophila)">−</button><output aria-live="polite">0</output><button type="button" class="mas" aria-label="Agregar Nube (gypsophila)">+</button></div></li>
+          <li data-flor="Eucalipto" data-precio="12"><span class="fe" aria-hidden="true">🌿</span><span class="fn">Eucalipto<small>$12 por tallo</small></span><div class="step"><button type="button" class="menos" aria-label="Quitar Eucalipto">−</button><output aria-live="polite">0</output><button type="button" class="mas" aria-label="Agregar Eucalipto">+</button></div></li>
+      </ul>
+
+      <div class="resumen">
+        <div class="bar"><i id="bar"></i></div>
+        <p id="res-txt">Agrega flores para armar tu ramo.</p>
+        <a class="btn wa" id="wa-custom" href="https://wa.me/" target="_blank" rel="noopener" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>Pedir mi ramo por WhatsApp</a>
+      </div>
+      </div>
+    </div>
+  </section>
+
   <section class="block join" id="unete">
     <div class="wrap">
       <div>
@@ -236,6 +325,108 @@
       : '¡Hola! Quiero hacer un pedido de flores.';
     a.href = `https://wa.me/${WA}?text=${encodeURIComponent(txt)}`;
   });
+
+  // ---- Arma tu ramo ----
+  const ARMADO = 60, MIN = 150, MAX = 20000;
+  const fmt = n => '$' + n.toLocaleString('es-MX');
+  const rows = [...document.querySelectorAll('#flores li')];
+  const precio = Object.fromEntries(rows.map(li => [li.dataset.flor, +li.dataset.precio]));
+  const cant = Object.fromEntries(rows.map(li => [li.dataset.flor, 0]));
+  const inp = document.getElementById('presupuesto');
+  const err = document.getElementById('b-err');
+  const sugs = document.getElementById('sugs');
+  const res = document.getElementById('res-txt');
+  const bar = document.getElementById('bar');
+  const waC = document.getElementById('wa-custom');
+  let budget = 500;
+
+  // Recetas: una "unidad" de flores que se repite, y el orden para rellenar lo que sobre
+  const RECETAS = [
+    {n:'Romántico', e:'🌹', u:{'Rosa':3,'Nube (gypsophila)':1,'Eucalipto':1}},
+    {n:'Alegre', e:'🌻', u:{'Girasol':2,'Gerbera':2,'Alstroemeria':2,'Eucalipto':1}},
+    {n:'Elegante', e:'🌷', u:{'Tulipán':3,'Lirio':1,'Eucalipto':1}},
+    {n:'De lujo', e:'🌸', u:{'Peonía':2,'Rosa':3,'Eucalipto':2}},
+  ];
+  const costo = m => Object.entries(m).reduce((s,[f,c]) => s + precio[f]*c, 0);
+  function armar(r, b) {
+    let libre = b - ARMADO; const u = costo(r.u), m = {};
+    if (libre < u) return null;
+    const veces = Math.floor(libre / u);
+    for (const [f,c] of Object.entries(r.u)) m[f] = c * veces;
+    libre -= u * veces;
+    for (let sigue = true; sigue;) { sigue = false;
+      for (const f of Object.keys(r.u)) if (precio[f] <= libre) { m[f]++; libre -= precio[f]; sigue = true; } }
+    return m;
+  }
+  const lista = m => Object.entries(m).filter(([,c]) => c).map(([f,c]) => `${c} × ${f}`);
+  const waLink = (titulo, m) => {
+    const t = `¡Hola! Quiero un ramo ${titulo} con presupuesto de ${fmt(budget)}:\n` +
+      lista(m).map(x => '• ' + x).join('\n') + `\nTotal: ${fmt(ARMADO + costo(m))} (incluye armado y envoltura). ¿Está disponible?`;
+    return `https://wa.me/${WA}?text=${encodeURIComponent(t)}`;
+  };
+
+  function pintarSugs() {
+    document.getElementById('b-label').textContent = fmt(budget);
+    sugs.replaceChildren();
+    const ops = RECETAS.map(r => [r, armar(r, budget)]).filter(([,m]) => m);
+    if (!ops.length) {
+      const min = Math.min(...RECETAS.map(r => ARMADO + costo(r.u)));
+      sugs.innerHTML = `<p class="vacio">Con ${fmt(budget)} todavía no alcanza para un ramo recomendado (desde ${fmt(min)}). Puedes armar uno pequeño eligiendo tus flores abajo.</p>`;
+      return;
+    }
+    for (const [r,m] of ops) {
+      const tot = ARMADO + costo(m), sobra = budget - tot;
+      const c = document.createElement('article'); c.className = 'sug';
+      c.innerHTML = `<h4><span aria-hidden="true">${r.e}</span>${r.n}</h4>
+        <ul>${lista(m).map(x => `<li>${x}</li>`).join('')}</ul>
+        <p class="tot">${fmt(tot)} ${sobra ? `<small>· te sobran ${fmt(sobra)}</small>` : ''}</p>
+        <div class="acts"><a class="btn wa" target="_blank" rel="noopener" href="${waLink(r.n.toLowerCase(), m)}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>Pedir por WhatsApp</a>
+        <button type="button" class="btn ghost">Ajustar este ramo</button></div>`;
+      c.querySelector('.ghost').addEventListener('click', () => {
+        for (const f in cant) cant[f] = m[f] || 0;
+        pintarRamo(); document.querySelector('.resumen').scrollIntoView({block:'nearest'});
+      });
+      sugs.append(c);
+    }
+  }
+
+  function pintarRamo() {
+    const flores = costo(cant), n = Object.values(cant).reduce((a,b) => a+b, 0);
+    const tot = n ? ARMADO + flores : 0, over = tot > budget;
+    rows.forEach(li => {
+      const f = li.dataset.flor;
+      li.querySelector('output').textContent = cant[f];
+      li.classList.toggle('on', cant[f] > 0);
+      li.querySelector('.menos').disabled = !cant[f];
+      li.querySelector('.mas').disabled = ARMADO + flores + precio[f] > budget;
+    });
+    bar.style.width = Math.min(100, tot / budget * 100) + '%';
+    bar.classList.toggle('over', over);
+    res.classList.toggle('over', over);
+    res.innerHTML = !n ? `Agrega flores para armar tu ramo. Tienes ${fmt(budget)}.`
+      : over ? `<b>${fmt(tot)}</b> · te pasaste ${fmt(tot - budget)}. Quita algunos tallos.`
+      : `<b>${fmt(tot)}</b> de ${fmt(budget)} · ${n} tallo${n > 1 ? 's' : ''} · te quedan ${fmt(budget - tot)}`;
+    const ok = n && !over;
+    waC.setAttribute('aria-disabled', ok ? 'false' : 'true');
+    waC.href = ok ? waLink('personalizado', cant) : `https://wa.me/${WA}`;
+  }
+
+  rows.forEach(li => {
+    const f = li.dataset.flor;
+    li.querySelector('.mas').addEventListener('click', () => { cant[f]++; pintarRamo(); });
+    li.querySelector('.menos').addEventListener('click', () => { if (cant[f]) cant[f]--; pintarRamo(); });
+  });
+
+  function setBudget(v) {
+    v = Math.round(+v);
+    if (!v || v < MIN || v > MAX) { err.textContent = `Escribe un presupuesto entre ${fmt(MIN)} y ${fmt(MAX)}.`; err.hidden = false; return; }
+    err.hidden = true; budget = v;
+    document.querySelectorAll('.chips button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.b === v));
+    pintarSugs(); pintarRamo();
+  }
+  inp.addEventListener('input', () => setBudget(inp.value));
+  document.querySelectorAll('.chips button').forEach(b => b.addEventListener('click', () => { inp.value = b.dataset.b; setBudget(b.dataset.b); }));
+  setBudget(inp.value);
 
   const form = document.getElementById('registro');
   const msg = document.getElementById('msg');
