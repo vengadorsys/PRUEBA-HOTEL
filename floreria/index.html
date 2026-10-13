@@ -12,6 +12,7 @@
   :root{
     --bg:#fbf5f1; --bg-2:#f6e7e3; --card:#fff; --ink:#2b2226; --muted:#6f6266;
     --accent:#c2557a; --accent-ink:#fff; --accent-soft:#f3d6e0; --leaf:#5f7f5a; --line:#ecdcd8;
+    --wa:#25d366; --wa-ink:#0b3d1f;
     --radius:18px; --serif:"Playfair Display",Georgia,serif;
     --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
@@ -36,9 +37,8 @@
   .menu{display:flex;gap:24px;list-style:none;margin:0;padding:0}
   .menu a{text-decoration:none;font-weight:500}
   .menu a:hover{color:var(--accent)}
-  .cart{position:relative;background:none;border:0;font-size:1.4rem;cursor:pointer;padding:6px}
-  .cart b{position:absolute;top:-2px;right:-6px;background:var(--accent);color:#fff;font:700 .7rem var(--sans);min-width:20px;height:20px;border-radius:999px;display:grid;place-items:center;transition:transform .2s}
-  .cart b.pop{transform:scale(1.35)}
+  .nav .wa{padding:.5em .9em}
+  @media (max-width:420px){.nav .wa span{display:none}}
   @media (max-width:720px){.menu{display:none}}
 
   /* Hero */
@@ -84,9 +84,17 @@
   .card .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
   .card h3{font-size:1.15rem;margin:0}
   .card p{margin:0;color:var(--muted);font-size:.9rem}
-  .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px}
+  .row{margin-top:auto;padding-top:10px}
   .price{font-weight:700;font-size:1.1rem}
-  .add{padding:.55em 1.1em;font-size:.9rem}
+  .wa{background:var(--wa);color:var(--wa-ink);padding:.6em 1em;font-size:.9rem;display:inline-flex;align-items:center;gap:.4em}
+  .wa:hover{box-shadow:0 8px 20px rgb(37 211 102 / .3)}
+  .wa svg{width:18px;height:18px;fill:currentColor;flex:none}
+  .card .wa{width:100%;justify-content:center;margin-top:12px}
+  .wa-float{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:15;width:58px;height:58px;padding:0;justify-content:center;border-radius:50%;box-shadow:0 10px 24px -8px rgb(0 0 0 / .4)}
+  .wa-float svg{width:30px;height:30px}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;list-style:none;padding:0;margin:0 0 28px;counter-reset:s}
+  .steps li{counter-increment:s;display:flex;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+  .steps li::before{content:counter(s);font:700 1.1rem var(--serif);width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;flex:none}
 
   /* Registro */
   .join{background:linear-gradient(135deg,var(--accent-soft),var(--bg-2))}
@@ -107,26 +115,24 @@
   footer p{margin:.2em 0}
   footer small{display:block;margin-top:32px;opacity:.7;text-align:center}
 
-  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:.8em 1.3em;border-radius:999px;font-size:.9rem;transition:transform .3s;z-index:20;max-width:calc(100% - 32px)}
-  .toast.show{transform:translate(-50%,0)}
 
   @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 
-<div class="notice">🌷 Envío gratis en compras desde $799 · Contenido de ejemplo (demo)</div>
+<div class="notice">🌷 Pide tu ramo por WhatsApp y te lo llevamos hoy · Contenido de ejemplo (demo)</div>
 
 <header>
   <nav class="wrap nav" aria-label="Principal">
     <a class="logo" href="#">Pétalo <span>&</span> Rama</a>
     <ul class="menu">
       <li><a href="#categorias">Categorías</a></li>
-      <li><a href="#productos">Tienda</a></li>
+      <li><a href="#productos">Ramos</a></li>
       <li><a href="#unete">Ofertas</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <button class="cart" aria-label="Carrito, 0 productos" id="cart">🛒<b id="count">0</b></button>
+    <a class="btn wa" data-ramo="" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg><span>Escríbenos</span></a>
   </nav>
 </header>
 
@@ -137,7 +143,7 @@
         <span class="demo-tag">Florería de barrio</span>
         <h1>Flores frescas que dicen <em>lo que sientes</em></h1>
         <p>Ramos armados a mano cada mañana y entregados el mismo día, para cumpleaños, aniversarios o simplemente porque sí.</p>
-        <a class="btn" href="#productos">Comprar ahora</a>
+        <a class="btn" href="#productos">Ver ramos</a>
       </div>
       <div class="hero-art" role="img" aria-label="Ilustración de un ramo de flores">💐</div>
     </div>
@@ -147,8 +153,8 @@
     <div class="wrap">
       <div class="perk"><i>🚚</i><div><strong>Entrega el mismo día</strong><small>Pedidos antes de las 2 p. m.</small></div></div>
       <div class="perk"><i>🌿</i><div><strong>Frescura garantizada</strong><small>Flores de temporada</small></div></div>
-      <div class="perk"><i>🔒</i><div><strong>Pago seguro</strong><small>Tarjeta o transferencia</small></div></div>
-      <div class="perk"><i>↩️</i><div><strong>Devoluciones fáciles</strong><small>Si algo no te gusta, lo cambiamos</small></div></div>
+      <div class="perk"><i>💬</i><div><strong>Pide por WhatsApp</strong><small>Te respondemos al momento</small></div></div>
+      <div class="perk"><i>💳</i><div><strong>Pago fácil</strong><small>Transferencia o al recibir</small></div></div>
     </div>
   </div>
 
@@ -168,16 +174,21 @@
 
   <section class="block" id="productos" style="padding-top:0">
     <div class="wrap">
-      <div class="head"><h2>Los favoritos de la semana</h2><span class="demo-tag">Precios de ejemplo</span></div>
+      <div class="head"><h2>Ramos ya hechos</h2><span class="demo-tag">Precios de ejemplo</span></div>
+      <ol class="steps">
+        <li>Elige el ramo que te guste</li>
+        <li>Toca «Pedir por WhatsApp»</li>
+        <li>Confirmamos el pago y la entrega</li>
+      </ol>
       <div class="grid">
-        <article class="card"><div class="ph g1">🌹</div><div class="body"><h3>Rosas Rosé</h3><p>12 rosas rosa pastel con eucalipto.</p><div class="row"><span class="price">$690</span><button class="btn add">Agregar</button></div></div></article>
-        <article class="card"><div class="ph g2">🌻</div><div class="body"><h3>Sol de Mañana</h3><p>Girasoles y margaritas en caja kraft.</p><div class="row"><span class="price">$520</span><button class="btn add">Agregar</button></div></div></article>
-        <article class="card"><div class="ph g3">💜</div><div class="body"><h3>Lavanda Suave</h3><p>Lisianthus y lavanda en tonos lila.</p><div class="row"><span class="price">$740</span><button class="btn add">Agregar</button></div></div></article>
-        <article class="card"><div class="ph g4">🪴</div><div class="body"><h3>Monstera en Maceta</h3><p>Planta de interior con maceta de barro.</p><div class="row"><span class="price">$450</span><button class="btn add">Agregar</button></div></div></article>
-        <article class="card"><div class="ph g5">🌷</div><div class="body"><h3>Tulipanes Coral</h3><p>10 tulipanes en jarrón de vidrio.</p><div class="row"><span class="price">$880</span><button class="btn add">Agregar</button></div></div></article>
-        <article class="card"><div class="ph g6">🤍</div><div class="body"><h3>Paz Blanca</h3><p>Lirios y rosas blancas, arreglo sobrio.</p><div class="row"><span class="price">$960</span><button class="btn add">Agregar</button></div></div></article>
-        <article class="card"><div class="ph g7">💐</div><div class="body"><h3>Ramo Sorpresa</h3><p>La florista elige lo más bonito del día.</p><div class="row"><span class="price">$590</span><button class="btn add">Agregar</button></div></div></article>
-        <article class="card"><div class="ph g8">🌸</div><div class="body"><h3>Peonías de Temporada</h3><p>Peonías rosadas, edición limitada.</p><div class="row"><span class="price">$1,150</span><button class="btn add">Agregar</button></div></div></article>
+        <article class="card"><div class="ph g1">🌹</div><div class="body"><h3>Rosas Rosé</h3><p>12 rosas rosa pastel con eucalipto.</p><div class="row"><span class="price">$690</span><a class="btn wa" data-ramo="Rosas Rosé" data-precio="$690" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>Pedir por WhatsApp</a></div></div></article>
+        <article class="card"><div class="ph g2">🌻</div><div class="body"><h3>Sol de Mañana</h3><p>Girasoles y margaritas en caja kraft.</p><div class="row"><span class="price">$520</span><a class="btn wa" data-ramo="Sol de Mañana" data-precio="$520" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>Pedir por WhatsApp</a></div></div></article>
+        <article class="card"><div class="ph g3">💜</div><div class="body"><h3>Lavanda Suave</h3><p>Lisianthus y lavanda en tonos lila.</p><div class="row"><span class="price">$740</span><a class="btn wa" data-ramo="Lavanda Suave" data-precio="$740" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>Pedir por WhatsApp</a></div></div></article>
+        <article class="card"><div class="ph g4">🪴</div><div class="body"><h3>Monstera en Maceta</h3><p>Planta de interior con maceta de barro.</p><div class="row"><span class="price">$450</span><a class="btn wa" data-ramo="Monstera en Maceta" data-precio="$450" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>Pedir por WhatsApp</a></div></div></article>
+        <article class="card"><div class="ph g5">🌷</div><div class="body"><h3>Tulipanes Coral</h3><p>10 tulipanes en jarrón de vidrio.</p><div class="row"><span class="price">$880</span><a class="btn wa" data-ramo="Tulipanes Coral" data-precio="$880" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>Pedir por WhatsApp</a></div></div></article>
+        <article class="card"><div class="ph g6">🤍</div><div class="body"><h3>Paz Blanca</h3><p>Lirios y rosas blancas, arreglo sobrio.</p><div class="row"><span class="price">$960</span><a class="btn wa" data-ramo="Paz Blanca" data-precio="$960" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>Pedir por WhatsApp</a></div></div></article>
+        <article class="card"><div class="ph g7">💐</div><div class="body"><h3>Ramo Sorpresa</h3><p>La florista elige lo más bonito del día.</p><div class="row"><span class="price">$590</span><a class="btn wa" data-ramo="Ramo Sorpresa" data-precio="$590" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>Pedir por WhatsApp</a></div></div></article>
+        <article class="card"><div class="ph g8">🌸</div><div class="body"><h3>Peonías de Temporada</h3><p>Peonías rosadas, edición limitada.</p><div class="row"><span class="price">$1,150</span><a class="btn wa" data-ramo="Peonías de Temporada" data-precio="$1,150" href="https://wa.me/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg>Pedir por WhatsApp</a></div></div></article>
       </div>
     </div>
   </section>
@@ -205,29 +216,26 @@
   <div class="wrap">
     <div class="cols">
       <div><h3>Pétalo & Rama</h3><p>Flores frescas, armadas a mano con cariño.</p></div>
-      <div><h3>Contacto</h3><p>📞 55 0000 0000</p><p>✉️ hola@ejemplo.com</p></div>
+      <div><h3>Contacto</h3><p>💬 WhatsApp: <span id="wa-num">55 0000 0000</span></p><p>✉️ hola@ejemplo.com</p></div>
       <div><h3>Visítanos</h3><p>📍 Calle de las Flores 123 (ejemplo)</p><p>Lun a Sáb · 9:00 a 19:00</p></div>
     </div>
-    <small>Contenido de ejemplo · Sitio demostrativo, el carrito es solo visual y no realiza cobros.</small>
+    <small>Contenido de ejemplo · Sitio demostrativo, los pedidos se hacen por WhatsApp.</small>
   </div>
 </footer>
 
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<a class="btn wa wa-float" data-ramo="" href="https://wa.me/" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.4-.3Z"/></svg></a>
 
 <script>
 (() => {
-  const count = document.getElementById('count');
-  const cart = document.getElementById('cart');
-  const toast = document.getElementById('toast');
-  let n = 0, t;
-  const say = txt => { toast.textContent = txt; toast.classList.add('show'); clearTimeout(t); t = setTimeout(() => toast.classList.remove('show'), 2200); };
-
-  document.querySelectorAll('.add').forEach(b => b.addEventListener('click', () => {
-    n++; count.textContent = n; cart.setAttribute('aria-label', `Carrito, ${n} productos`);
-    count.classList.add('pop'); setTimeout(() => count.classList.remove('pop'), 200);
-    say(`${b.closest('.card').querySelector('h3').textContent} agregado al carrito 🌸`);
-  }));
-  cart.addEventListener('click', () => say(n ? `Tienes ${n} producto(s). Demo: el pago no está activo.` : 'Tu carrito está vacío'));
+  // Número de WhatsApp de la florería: código de país + número, sin espacios (ejemplo)
+  const WA = '525500000000';
+  document.querySelectorAll('a.wa').forEach(a => {
+    const ramo = a.dataset.ramo;
+    const txt = ramo
+      ? `¡Hola! Me interesa el ramo "${ramo}" (${a.dataset.precio}). ¿Está disponible para entrega hoy?`
+      : '¡Hola! Quiero hacer un pedido de flores.';
+    a.href = `https://wa.me/${WA}?text=${encodeURIComponent(txt)}`;
+  });
 
   const form = document.getElementById('registro');
   const msg = document.getElementById('msg');
