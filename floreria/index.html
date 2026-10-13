@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pétalo & Rama · Florería</title>
+<meta name="description" content="Demo de florería: ramos, arreglos y plantas con entrega el mismo día.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbf5f1; --bg-2:#f6e7e3; --card:#fff; --ink:#2b2226; --muted:#6f6266;
+    --accent:#c2557a; --accent-ink:#fff; --accent-soft:#f3d6e0; --leaf:#5f7f5a; --line:#ecdcd8;
+    --radius:18px; --serif:"Playfair Display",Georgia,serif;
+    --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);overflow-x:hidden}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.15;margin:0 0 .5em}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
+  .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:.85em 1.6em;font:600 1rem var(--sans);text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgb(194 85 122 / .3)}
+  .btn:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--leaf);outline-offset:2px}
+  .demo-tag{display:inline-block;font-size:.75rem;letter-spacing:.04em;text-transform:uppercase;background:var(--accent-soft);color:var(--accent);padding:.25em .7em;border-radius:999px;font-weight:600}
+
+  /* Barra superior */
+  .notice{background:var(--leaf);color:#fff;text-align:center;font-size:.875rem;padding:.5em 16px}
+  header{position:sticky;top:0;z-index:10;background:rgb(251 245 241 / .92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+  .logo{font-family:var(--serif);font-size:1.4rem;font-weight:700;text-decoration:none}
+  .logo span{color:var(--accent)}
+  .menu{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+  .menu a{text-decoration:none;font-weight:500}
+  .menu a:hover{color:var(--accent)}
+  .cart{position:relative;background:none;border:0;font-size:1.4rem;cursor:pointer;padding:6px}
+  .cart b{position:absolute;top:-2px;right:-6px;background:var(--accent);color:#fff;font:700 .7rem var(--sans);min-width:20px;height:20px;border-radius:999px;display:grid;place-items:center;transition:transform .2s}
+  .cart b.pop{transform:scale(1.35)}
+  @media (max-width:720px){.menu{display:none}}
+
+  /* Hero */
+  .hero{padding:56px 0 64px}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.6rem)}
+  .hero h1 em{color:var(--accent);font-style:italic}
+  .hero p{font-size:1.15rem;color:var(--muted);max-width:30em;margin:0 0 1.6em}
+  .hero-art{aspect-ratio:4/5;border-radius:200px 200px var(--radius) var(--radius);background:radial-gradient(circle at 30% 25%,#fde2ea 0 18%,transparent 19%),radial-gradient(circle at 72% 40%,#f7c6d4 0 14%,transparent 15%),radial-gradient(circle at 45% 62%,#fbd8c6 0 16%,transparent 17%),linear-gradient(160deg,#f3d6e0,#e9b8c8 55%,#c9d8c0);display:grid;place-items:center;font-size:clamp(5rem,14vw,9rem);box-shadow:0 30px 60px -30px rgb(194 85 122 / .5)}
+  @media (max-width:720px){.hero .wrap{grid-template-columns:1fr}.hero-art{max-width:340px;margin:0 auto;width:100%}}
+
+  /* Beneficios */
+  .perks{background:var(--card);border-block:1px solid var(--line)}
+  .perks .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;padding-block:24px}
+  .perk{display:flex;gap:12px;align-items:center}
+  .perk i{font-style:normal;font-size:1.6rem;width:48px;height:48px;border-radius:50%;background:var(--bg-2);display:grid;place-items:center;flex:none}
+  .perk strong{display:block}
+  .perk small{color:var(--muted)}
+
+  section.block{padding:64px 0}
+  .head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+  .head h2{font-size:clamp(1.7rem,3.5vw,2.4rem);margin:0}
+
+  /* Categorías */
+  .cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
+  .cat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 12px;text-align:center;text-decoration:none;transition:transform .2s,border-color .2s}
+  .cat:hover{transform:translateY(-4px);border-color:var(--accent)}
+  .cat span{display:block;font-size:2.2rem;margin-bottom:6px}
+
+  /* Productos */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px}
+  .card{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -24px rgb(43 34 38 / .35)}
+  .ph{aspect-ratio:1;display:grid;place-items:center;font-size:4.5rem}
+  .g1{background:linear-gradient(145deg,#fde2ea,#f2a7bd)}
+  .g2{background:linear-gradient(145deg,#fff1d6,#f6c27a)}
+  .g3{background:linear-gradient(145deg,#ece4fb,#b9a3e3)}
+  .g4{background:linear-gradient(145deg,#e3f0dc,#9fc18f)}
+  .g5{background:linear-gradient(145deg,#ffe4dc,#f19b84)}
+  .g6{background:linear-gradient(145deg,#fdf6e8,#e8d3b0)}
+  .g7{background:linear-gradient(145deg,#e1eef7,#9cc0dc)}
+  .g8{background:linear-gradient(145deg,#fbe0f0,#d78bb8)}
+  .card .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card h3{font-size:1.15rem;margin:0}
+  .card p{margin:0;color:var(--muted);font-size:.9rem}
+  .row{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px}
+  .price{font-weight:700;font-size:1.1rem}
+  .add{padding:.55em 1.1em;font-size:.9rem}
+
+  /* Registro */
+  .join{background:linear-gradient(135deg,var(--accent-soft),var(--bg-2))}
+  .join .wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+  @media (max-width:820px){.join .wrap{grid-template-columns:1fr}}
+  .join h2{font-size:clamp(1.8rem,4vw,2.6rem)}
+  .join p{color:var(--muted)}
+  form{background:var(--card);border-radius:var(--radius);padding:24px;display:grid;gap:14px;box-shadow:0 20px 50px -30px rgb(43 34 38 / .4)}
+  label{font-weight:600;font-size:.9rem;display:grid;gap:6px}
+  input[type=text],input[type=email],input[type=tel]{font:inherit;padding:.75em .9em;border:1px solid var(--line);border-radius:12px;background:var(--bg);width:100%}
+  .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.85rem;color:var(--muted)}
+  .check input{margin-top:.25em;accent-color:var(--accent);width:18px;height:18px;flex:none}
+  #msg{margin:0;min-height:1.5em;font-weight:600;color:var(--leaf)}
+
+  footer{background:var(--ink);color:#e9dfe2;padding:48px 0 24px;font-size:.95rem}
+  footer .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+  footer h3{color:#fff;font-size:1.1rem}
+  footer p{margin:.2em 0}
+  footer small{display:block;margin-top:32px;opacity:.7;text-align:center}
+
+  .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,120px);background:var(--ink);color:#fff;padding:.8em 1.3em;border-radius:999px;font-size:.9rem;transition:transform .3s;z-index:20;max-width:calc(100% - 32px)}
+  .toast.show{transform:translate(-50%,0)}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="notice">🌷 Envío gratis en compras desde $799 · Contenido de ejemplo (demo)</div>
+
+<header>
+  <nav class="wrap nav" aria-label="Principal">
+    <a class="logo" href="#">Pétalo <span>&</span> Rama</a>
+    <ul class="menu">
+      <li><a href="#categorias">Categorías</a></li>
+      <li><a href="#productos">Tienda</a></li>
+      <li><a href="#unete">Ofertas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <button class="cart" aria-label="Carrito, 0 productos" id="cart">🛒<b id="count">0</b></button>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="demo-tag">Florería de barrio</span>
+        <h1>Flores frescas que dicen <em>lo que sientes</em></h1>
+        <p>Ramos armados a mano cada mañana y entregados el mismo día, para cumpleaños, aniversarios o simplemente porque sí.</p>
+        <a class="btn" href="#productos">Comprar ahora</a>
+      </div>
+      <div class="hero-art" role="img" aria-label="Ilustración de un ramo de flores">💐</div>
+    </div>
+  </section>
+
+  <div class="perks">
+    <div class="wrap">
+      <div class="perk"><i>🚚</i><div><strong>Entrega el mismo día</strong><small>Pedidos antes de las 2 p. m.</small></div></div>
+      <div class="perk"><i>🌿</i><div><strong>Frescura garantizada</strong><small>Flores de temporada</small></div></div>
+      <div class="perk"><i>🔒</i><div><strong>Pago seguro</strong><small>Tarjeta o transferencia</small></div></div>
+      <div class="perk"><i>↩️</i><div><strong>Devoluciones fáciles</strong><small>Si algo no te gusta, lo cambiamos</small></div></div>
+    </div>
+  </div>
+
+  <section class="block" id="categorias">
+    <div class="wrap">
+      <div class="head"><h2>Encuentra la ocasión</h2></div>
+      <div class="cats">
+        <a class="cat" href="#productos"><span>🌹</span>Amor</a>
+        <a class="cat" href="#productos"><span>🎂</span>Cumpleaños</a>
+        <a class="cat" href="#productos"><span>🌻</span>Para alegrar</a>
+        <a class="cat" href="#productos"><span>🪴</span>Plantas</a>
+        <a class="cat" href="#productos"><span>🤍</span>Condolencias</a>
+        <a class="cat" href="#productos"><span>🎁</span>Regalos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="productos" style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><h2>Los favoritos de la semana</h2><span class="demo-tag">Precios de ejemplo</span></div>
+      <div class="grid">
+        <article class="card"><div class="ph g1">🌹</div><div class="body"><h3>Rosas Rosé</h3><p>12 rosas rosa pastel con eucalipto.</p><div class="row"><span class="price">$690</span><button class="btn add">Agregar</button></div></div></article>
+        <article class="card"><div class="ph g2">🌻</div><div class="body"><h3>Sol de Mañana</h3><p>Girasoles y margaritas en caja kraft.</p><div class="row"><span class="price">$520</span><button class="btn add">Agregar</button></div></div></article>
+        <article class="card"><div class="ph g3">💜</div><div class="body"><h3>Lavanda Suave</h3><p>Lisianthus y lavanda en tonos lila.</p><div class="row"><span class="price">$740</span><button class="btn add">Agregar</button></div></div></article>
+        <article class="card"><div class="ph g4">🪴</div><div class="body"><h3>Monstera en Maceta</h3><p>Planta de interior con maceta de barro.</p><div class="row"><span class="price">$450</span><button class="btn add">Agregar</button></div></div></article>
+        <article class="card"><div class="ph g5">🌷</div><div class="body"><h3>Tulipanes Coral</h3><p>10 tulipanes en jarrón de vidrio.</p><div class="row"><span class="price">$880</span><button class="btn add">Agregar</button></div></div></article>
+        <article class="card"><div class="ph g6">🤍</div><div class="body"><h3>Paz Blanca</h3><p>Lirios y rosas blancas, arreglo sobrio.</p><div class="row"><span class="price">$960</span><button class="btn add">Agregar</button></div></div></article>
+        <article class="card"><div class="ph g7">💐</div><div class="body"><h3>Ramo Sorpresa</h3><p>La florista elige lo más bonito del día.</p><div class="row"><span class="price">$590</span><button class="btn add">Agregar</button></div></div></article>
+        <article class="card"><div class="ph g8">🌸</div><div class="body"><h3>Peonías de Temporada</h3><p>Peonías rosadas, edición limitada.</p><div class="row"><span class="price">$1,150</span><button class="btn add">Agregar</button></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="block join" id="unete">
+    <div class="wrap">
+      <div>
+        <span class="demo-tag">Club Pétalo</span>
+        <h2>Únete y recibe ofertas</h2>
+        <p>Regístrate para enterarte primero de las flores de temporada, descuentos en fechas especiales y recordatorios para que nunca olvides un cumpleaños.</p>
+      </div>
+      <form id="registro" novalidate>
+        <label>Nombre <input type="text" name="nombre" required maxlength="80" autocomplete="name"></label>
+        <label>Correo electrónico <input type="email" name="email" required autocomplete="email"></label>
+        <label>Teléfono <input type="tel" name="telefono" maxlength="24" autocomplete="tel"></label>
+        <label class="check"><input type="checkbox" name="consent" required> Acepto que guarden mis datos para contactarme con ofertas y novedades.</label>
+        <button class="btn" type="submit">Quiero unirme</button>
+        <p id="msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer id="contacto">
+  <div class="wrap">
+    <div class="cols">
+      <div><h3>Pétalo & Rama</h3><p>Flores frescas, armadas a mano con cariño.</p></div>
+      <div><h3>Contacto</h3><p>📞 55 0000 0000</p><p>✉️ hola@ejemplo.com</p></div>
+      <div><h3>Visítanos</h3><p>📍 Calle de las Flores 123 (ejemplo)</p><p>Lun a Sáb · 9:00 a 19:00</p></div>
+    </div>
+    <small>Contenido de ejemplo · Sitio demostrativo, el carrito es solo visual y no realiza cobros.</small>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  const count = document.getElementById('count');
+  const cart = document.getElementById('cart');
+  const toast = document.getElementById('toast');
+  let n = 0, t;
+  const say = txt => { toast.textContent = txt; toast.classList.add('show'); clearTimeout(t); t = setTimeout(() => toast.classList.remove('show'), 2200); };
+
+  document.querySelectorAll('.add').forEach(b => b.addEventListener('click', () => {
+    n++; count.textContent = n; cart.setAttribute('aria-label', `Carrito, ${n} productos`);
+    count.classList.add('pop'); setTimeout(() => count.classList.remove('pop'), 200);
+    say(`${b.closest('.card').querySelector('h3').textContent} agregado al carrito 🌸`);
+  }));
+  cart.addEventListener('click', () => say(n ? `Tienes ${n} producto(s). Demo: el pago no está activo.` : 'Tu carrito está vacío'));
+
+  const form = document.getElementById('registro');
+  const msg = document.getElementById('msg');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!form.checkValidity()) { msg.style.color = 'var(--accent)'; msg.textContent = 'Revisa tu nombre, correo y la casilla de aceptación.'; form.reportValidity(); return; }
+    msg.style.color = '';
+    const d = Object.fromEntries(new FormData(form)); d.consent = form.consent.checked;
+    try {
+      const r = await fetch('registro.php', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(d)});
+      const j = await r.json(); if (!j.ok) throw 0;
+      msg.textContent = '¡Listo! Ya estás registrado ✅';
+    } catch (_) { // sin servidor (vista previa): guarda local para la demo
+      try {
+        const a = JSON.parse(localStorage.getItem('clientes') || '[]'); a.push(d);
+        localStorage.setItem('clientes', JSON.stringify(a));
+      } catch (_) {}
+      msg.textContent = 'Registro guardado (modo demo) ✅';
+    }
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>

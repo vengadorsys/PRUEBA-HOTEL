@@ -6,3 +6,4 @@ secret_config.php
 .env
 node_modules/
 tools/fuentes/
+floreria/datos/
