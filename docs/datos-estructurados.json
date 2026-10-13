@@ -1,0 +1,28 @@
+{
+  "_instrucciones": "Plantilla de datos estructurados (schema.org/Hotel). Publicar en <head> como <script type=\"application/ld+json\"> SOLO cuando el hotel confirme datos reales (nombre legal, dirección, teléfono, coordenadas, precios). No publicar con datos ficticios.",
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  "name": "NOMBRE REAL DEL HOTEL",
+  "description": "Descripción real del hotel.",
+  "url": "https://DOMINIO-REAL/",
+  "telephone": "+52 ...",
+  "email": "reservas@DOMINIO-REAL",
+  "image": ["https://DOMINIO-REAL/assets/img/hero.webp"],
+  "priceRange": "$$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Calle y número reales",
+    "addressLocality": "Bacalar",
+    "addressRegion": "Quintana Roo",
+    "postalCode": "77930",
+    "addressCountry": "MX"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 0, "longitude": 0 },
+  "checkinTime": "15:00",
+  "checkoutTime": "12:00",
+  "petsAllowed": false,
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "Alberca", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "Wifi", "value": true }
+  ]
+}

@@ -1,0 +1,8 @@
+# Nunca subir secretos ni datos de clientes
+_privado/
+*.sqlite
+gemini_api_key.php
+secret_config.php
+.env
+node_modules/
+tools/fuentes/

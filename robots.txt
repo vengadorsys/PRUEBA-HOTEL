@@ -1,0 +1,4 @@
+# Sitio de demostración (hotel ficticio): no se indexa.
+# Para un hotel real: cambiar a "Allow: /" y quitar la etiqueta noindex del HTML.
+User-agent: *
+Disallow: /

@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Siete Azules · Hotel de Laguna en Bacalar | Suites frente a la laguna (demo)</title>
+  <meta name="description" content="Siete Azules es un hotel boutique de laguna en Bacalar, Quintana Roo: suites sobre el agua, alberca infinita, spa y cocina peninsular. Sitio de demostración con hotel ficticio.">
+  <meta name="theme-color" content="#0f2233">
+  <link rel="canonical" href="https://bisque-narwhal-197874.hostingersite.com/">
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Open Graph / redes sociales -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="Siete Azules · Hotel de Laguna">
+  <meta property="og:title" content="Siete Azules · Hotel de Laguna en Bacalar">
+  <meta property="og:description" content="Suites frente a la laguna de los siete colores, alberca infinita, spa y cocina peninsular. Demo de sitio web para hoteles.">
+  <meta property="og:image" content="https://bisque-narwhal-197874.hostingersite.com/assets/img/og.jpg">
+  <meta property="og:url" content="https://bisque-narwhal-197874.hostingersite.com/">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="preload" as="image" href="assets/img/hero.webp" fetchpriority="high">
+  <link rel="stylesheet" href="lib/leaflet.css">
+  <link rel="stylesheet" href="styles.css?v=20261013">
+
+  <!-- Datos estructurados: se publican solo cuando el hotel confirme su información real.
+       Plantilla preparada en docs/datos-estructurados.json -->
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-guests" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2c2.4-.3 4.4 1.2 5 4.3"/></g></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 18V7M3 14h18v4M21 14v-2.5A2.5 2.5 0 0 0 18.5 9H11v5"/><circle cx="7" cy="11" r="1.8"/></g></symbol>
+    <symbol id="i-size" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 15v5h-5M4 4l6 6M20 20l-6-6"/></g></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-4.5 4v-4h0A2.5 2.5 0 0 1 4 13.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8zM18.5 15.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" fill="currentColor"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3zm0 16.3c-1.4 0-2.8-.4-4-1.1l-.3-.2-2.7.7.7-2.6-.2-.3A7.3 7.3 0 1 1 12 19.3zm4-5.5c-.2-.1-1.3-.6-1.5-.7-.2-.1-.3-.1-.5.1l-.7.9c-.1.1-.3.2-.5.1a6 6 0 0 1-3-2.6c-.2-.4.2-.4.7-1.2.1-.1 0-.3 0-.4l-.7-1.6c-.2-.4-.4-.4-.5-.4h-.4a.8.8 0 0 0-.6.3 2.5 2.5 0 0 0-.8 1.9 4.4 4.4 0 0 0 .9 2.3 10 10 0 0 0 3.8 3.4c1.4.6 2 .6 2.7.5.4-.1 1.3-.5 1.5-1.1.2-.5.2-1 .1-1.1l-.5-.2z" fill="currentColor"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0 1 19 9.5C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></g></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5l2.6.4 1.3 3.6-1.8 1.4a11 11 0 0 0 6.4 6.4l1.4-1.8 3.6 1.3.4 2.6a2 2 0 0 1-2 2.1A16.5 16.5 0 0 1 4.5 5.5a2 2 0 0 1 2.1-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".9" fill="currentColor"/></g></symbol>
+    <symbol id="i-fb" viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.6l.4-3h-3V8.6c0-.9.3-1.5 1.5-1.5h1.6V4.4A21 21 0 0 0 14.3 4c-2.3 0-3.8 1.4-3.8 3.9v2.6H8v3h2.5V21" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-tt" viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3-3.46V8a6.5 6.5 0 1 0 6 6.48V9.2a7 7 0 0 0 4 1.3v-3A4 4 0 0 1 17 3.5V3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M4 12l16-8-6 16-2.5-6.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <!-- Aviso de demostración -->
+  <div class="demo-ribbon" role="note">
+    <p><strong>Sitio de demostración.</strong> Siete Azules es un hotel ficticio: precios, servicios, opiniones y disponibilidad son ejemplos.</p>
+  </div>
+
+  <!-- ============ NAVEGACIÓN ============ -->
+  <header class="nav" data-nav>
+    <div class="nav-inner">
+      <a href="#inicio" class="brand" aria-label="Siete Azules, ir al inicio">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="none" stroke="currentColor" stroke-width="1"/><path d="M7 21c3-2.2 6-2.2 9 0s6 2.2 9 0 6-2.2 9 0M9 26c2.7-1.8 5.4-1.8 8 0s5.4 1.8 8 0 5.4-1.8 7.5 0M11 16c2.4-1.6 4.8-1.6 7.2 0s4.8 1.6 7.2 0 4.2-1.4 6 0" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"/></svg>
+        <span class="brand-text"><span class="brand-name">Siete Azules</span><span class="brand-sub">Hotel de Laguna · Bacalar</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Principal">
+        <a href="#hotel">El hotel</a>
+        <a href="#habitaciones">Habitaciones</a>
+        <a href="#experiencias">Experiencias</a>
+        <a href="#galeria">Galería</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a href="#buscador" class="btn btn-gold nav-cta">Reservar</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-movil" aria-label="Abrir menú" data-nav-toggle>
+        <span></span><span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="menu-movil" hidden>
+      <nav aria-label="Menú móvil">
+        <a href="#hotel">El hotel</a>
+        <a href="#habitaciones">Habitaciones</a>
+        <a href="#buscador">Buscador inteligente</a>
+        <a href="#experiencias">Experiencias</a>
+        <a href="#galeria">Galería</a>
+        <a href="#faq">Preguntas frecuentes</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a href="#buscador" class="btn btn-gold btn-block">Consultar disponibilidad</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-media" data-parallax>
+        <img src="assets/img/hero.webp" alt="Hotel Siete Azules al atardecer: muelle de madera con palapa sobre la laguna turquesa de Bacalar y villas entre palmeras" width="1680" height="944" fetchpriority="high" loading="eager">
+      </div>
+      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-content container">
+        <p class="eyebrow eyebrow-light reveal">Bacalar · Quintana Roo · México</p>
+        <h1 id="hero-title" class="hero-title reveal">
+          <span class="line">La laguna de</span>
+          <span class="line"><em>los siete azules</em>,</span>
+          <span class="line">a tu ritmo.</span>
+        </h1>
+        <p class="hero-lead reveal">Veinticuatro habitaciones y suites entre la selva y el agua dulce más clara de México. Despierta sobre un palafito, nada al amanecer y deja que el tiempo pase despacio.</p>
+        <div class="hero-actions reveal">
+          <a href="#buscador" class="btn btn-gold">Consultar disponibilidad <svg class="ico"><use href="#i-arrow"/></svg></a>
+          <a href="#habitaciones" class="btn btn-ghost-light">Ver habitaciones</a>
+        </div>
+      </div>
+
+      <!-- Buscador de disponibilidad integrado al hero -->
+      <form class="booking-bar container reveal" data-booking-bar aria-label="Buscador de disponibilidad" novalidate>
+        <div class="bb-field">
+          <label for="bb-in">Llegada</label>
+          <input id="bb-in" name="entrada" type="date" required>
+        </div>
+        <div class="bb-field">
+          <label for="bb-out">Salida</label>
+          <input id="bb-out" name="salida" type="date" required>
+        </div>
+        <div class="bb-field">
+          <label for="bb-guests">Huéspedes</label>
+          <select id="bb-guests" name="huespedes">
+            <option value="1-0">1 adulto</option>
+            <option value="2-0" selected>2 adultos</option>
+            <option value="2-1">2 adultos · 1 niño</option>
+            <option value="2-2">2 adultos · 2 niños</option>
+            <option value="2-3">2 adultos · 3 niños</option>
+            <option value="3-0">3 adultos</option>
+            <option value="4-0">4 adultos</option>
+          </select>
+        </div>
+        <div class="bb-field">
+          <label for="bb-room">Habitación</label>
+          <select id="bb-room" name="habitacion">
+            <option value="">Cualquiera</option>
+            <option value="jardin">Habitación Jardín</option>
+            <option value="deluxe">Deluxe Vista Laguna</option>
+            <option value="palafito">Suite Palafito</option>
+            <option value="familiar">Suite Familiar Selva</option>
+          </select>
+        </div>
+        <button class="btn btn-gold bb-submit" type="submit">Ver disponibilidad</button>
+        <p class="bb-error" role="alert" data-bb-error></p>
+      </form>
+
+      <a href="#hotel" class="scroll-cue" aria-label="Desplazarse a la presentación del hotel"><span></span></a>
+    </section>
+
+    <!-- ============ PRESENTACIÓN ============ -->
+    <section class="story section" id="hotel" aria-labelledby="story-title">
+      <div class="container story-grid">
+        <div class="story-text">
+          <p class="eyebrow reveal">El hotel</p>
+          <h2 id="story-title" class="display reveal">Una casa de laguna hecha con <em>chukum</em>, madera y paciencia.</h2>
+          <p class="lead reveal">Siete Azules nació de una idea sencilla: que el lujo en Bacalar no debería sentirse como un resort, sino como la casa de alguien que conoce cada rincón de la laguna.</p>
+          <p class="reveal">Nuestras villas siguen la tradición constructiva de la península: muros de estuco de chukum que respiran, techos de palapa y maderas de la región. Solo veinticuatro llaves, para que el silencio y la atención personal sigan siendo la norma.</p>
+          <ul class="story-points">
+            <li class="reveal"><span class="sp-num">01</span><div><h3>Frente al agua</h3><p>Muelle privado, alberca infinita y kayaks para remar la laguna al amanecer.</p></div></li>
+            <li class="reveal"><span class="sp-num">02</span><div><h3>Escala humana</h3><p>Veinticuatro habitaciones y un equipo que te llama por tu nombre.</p></div></li>
+            <li class="reveal"><span class="sp-num">03</span><div><h3>Hospitalidad consciente</h3><p>Proveedores locales, energía solar y cero plásticos de un solo uso.</p></div></li>
+          </ul>
+          <p class="demo-note">Concepto y cifras de demostración.</p>
+        </div>
+        <div class="story-media">
+          <figure class="story-fig story-fig-a reveal-img">
+            <img src="assets/img/alberca.webp" alt="Alberca infinita con camastros de lino frente a la laguna de Bacalar" width="1280" height="720" loading="lazy" decoding="async">
+          </figure>
+          <figure class="story-fig story-fig-b reveal-img">
+            <img src="assets/img/restaurante.webp" alt="Restaurante bajo palapa con lámparas tejidas al anochecer, con la laguna al fondo" width="1024" height="768" loading="lazy" decoding="async">
+          </figure>
+          <div class="story-stamp" aria-hidden="true">
+            <svg viewBox="0 0 120 120"><defs><path id="circ" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#circ">· HOTEL DE LAGUNA · BACALAR · SIETE AZULES </textPath></text></svg>
+          </div>
+        </div>
+      </div>
+      <div class="container stats">
+        <div class="stat reveal"><span class="stat-num" data-count="24">24</span><span class="stat-label">habitaciones y suites</span></div>
+        <div class="stat reveal"><span class="stat-num" data-count="7">7</span><span class="stat-label">tonos de azul en la laguna</span></div>
+        <div class="stat reveal"><span class="stat-num" data-count="120">120</span><span class="stat-label">metros de muelle privado</span></div>
+        <div class="stat reveal"><span class="stat-num" data-count="40">40</span><span class="stat-label">minutos del aeropuerto de Chetumal</span></div>
+      </div>
+    </section>
+
+    <!-- ============ HABITACIONES ============ -->
+    <section class="rooms section section-sand" id="habitaciones" aria-labelledby="rooms-title">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow reveal">Habitaciones y suites</p>
+            <h2 id="rooms-title" class="display reveal">Cuatro maneras de vivir la laguna</h2>
+          </div>
+          <p class="section-intro reveal">Cada espacio está orientado a la brisa y a la luz. Precios orientativos por noche, en pesos mexicanos, impuestos no incluidos. <span class="badge-demo">Precios de ejemplo</span></p>
+        </header>
+
+        <div class="room-grid" data-room-grid>
+          <article class="room-card reveal" data-room="jardin">
+            <div class="room-media">
+              <img src="assets/img/hab-jardin.webp" alt="Habitación Jardín: cama queen con lino blanco, cabecera de ratán y ventana a las palmas" width="1024" height="768" loading="lazy" decoding="async">
+              <span class="room-tag">Estándar</span>
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Habitación Jardín</h3>
+              <p class="room-desc">Refugio tranquilo entre palmas y chukum, ideal para quien pasa el día explorando.</p>
+              <ul class="room-specs">
+                <li><svg class="ico"><use href="#i-guests"/></svg>Hasta 3 huéspedes</li>
+                <li><svg class="ico"><use href="#i-bed"/></svg>Cama queen</li>
+                <li><svg class="ico"><use href="#i-size"/></svg>28 m²</li>
+              </ul>
+              <ul class="room-amen">
+                <li>Vista al jardín</li><li>Regadera de lluvia</li><li>Wifi</li><li>Planta baja accesible</li>
+              </ul>
+              <div class="room-foot">
+                <p class="room-price"><span>desde</span> $3,200 <small>MXN / noche</small></p>
+                <a href="#buscador" class="btn btn-outline btn-sm" data-room-cta="jardin">Consultar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card reveal" data-room="deluxe">
+            <div class="room-media">
+              <img src="assets/img/hab-deluxe.webp" alt="Deluxe Vista Laguna: cama king frente a puertas de cristal y balcón sobre la laguna turquesa" width="1024" height="768" loading="lazy" decoding="async">
+              <span class="room-tag">Deluxe</span>
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Deluxe Vista Laguna</h3>
+              <p class="room-desc">Despierta frente a los siete azules desde tu balcón privado.</p>
+              <ul class="room-specs">
+                <li><svg class="ico"><use href="#i-guests"/></svg>Hasta 3 huéspedes</li>
+                <li><svg class="ico"><use href="#i-bed"/></svg>King size</li>
+                <li><svg class="ico"><use href="#i-size"/></svg>38 m²</li>
+              </ul>
+              <ul class="room-amen">
+                <li>Balcón privado</li><li>Desayuno incluido</li><li>Café de especialidad</li><li>Vista a la laguna</li>
+              </ul>
+              <div class="room-foot">
+                <p class="room-price"><span>desde</span> $4,900 <small>MXN / noche</small></p>
+                <a href="#buscador" class="btn btn-outline btn-sm" data-room-cta="deluxe">Consultar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card room-card-feature reveal" data-room="palafito">
+            <div class="room-media">
+              <img src="assets/img/hab-palafito.webp" alt="Suite Palafito sobre el agua: dosel de lino, tina exenta y terraza privada con escalera a la laguna" width="1024" height="768" loading="lazy" decoding="async">
+              <span class="room-tag room-tag-gold">Suite premium</span>
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Suite Palafito</h3>
+              <p class="room-desc">Sobre el agua, con terraza privada y escalera directa a la laguna. Nuestro rincón más íntimo.</p>
+              <ul class="room-specs">
+                <li><svg class="ico"><use href="#i-guests"/></svg>2 adultos</li>
+                <li><svg class="ico"><use href="#i-bed"/></svg>King size</li>
+                <li><svg class="ico"><use href="#i-size"/></svg>62 m²</li>
+              </ul>
+              <ul class="room-amen">
+                <li>Terraza sobre el agua</li><li>Tina exenta</li><li>Desayuno en terraza</li><li>Kayak de cortesía</li>
+              </ul>
+              <div class="room-foot">
+                <p class="room-price"><span>desde</span> $8,600 <small>MXN / noche</small></p>
+                <a href="#buscador" class="btn btn-outline btn-sm" data-room-cta="palafito">Consultar</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="room-card reveal" data-room="familiar">
+            <div class="room-media">
+              <img src="assets/img/hab-familiar.webp" alt="Suite Familiar Selva: cama king, dos camas individuales, hamaca y terraza al jardín tropical" width="1024" height="768" loading="lazy" decoding="async">
+              <span class="room-tag">Suite familiar</span>
+            </div>
+            <div class="room-body">
+              <h3 class="room-name">Suite Familiar Selva</h3>
+              <p class="room-desc">Dos ambientes, terraza con hamaca y espacio para jugar a la sombra de la selva.</p>
+              <ul class="room-specs">
+                <li><svg class="ico"><use href="#i-guests"/></svg>Hasta 5 huéspedes</li>
+                <li><svg class="ico"><use href="#i-bed"/></svg>King + 2 individuales</li>
+                <li><svg class="ico"><use href="#i-size"/></svg>75 m²</li>
+              </ul>
+              <ul class="room-amen">
+                <li>Terraza con hamaca</li><li>Desayuno incluido</li><li>Kit infantil</li><li>Planta baja accesible</li>
+              </ul>
+              <div class="room-foot">
+                <p class="room-price"><span>desde</span> $7,200 <small>MXN / noche</small></p>
+                <a href="#buscador" class="btn btn-outline btn-sm" data-room-cta="familiar">Consultar</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BUSCADOR INTELIGENTE ============ -->
+    <section class="finder section section-ink" id="buscador" aria-labelledby="finder-title">
+      <div class="container">
+        <header class="section-head section-head-light">
+          <div>
+            <p class="eyebrow eyebrow-gold reveal"><svg class="ico"><use href="#i-spark"/></svg> Buscador inteligente de estancias</p>
+            <h2 id="finder-title" class="display reveal">Cuéntanos tu viaje. <em>Te proponemos la habitación ideal.</em></h2>
+          </div>
+          <p class="section-intro reveal">Analizamos fechas, huéspedes, presupuesto y preferencias para recomendarte las opciones que mejor encajan, con una explicación personalizada.</p>
+        </header>
+
+        <form class="finder-form" data-finder novalidate>
+          <div class="ff-grid">
+            <fieldset class="ff-block">
+              <legend>Fechas</legend>
+              <div class="ff-row">
+                <div class="field"><label for="f-in">Llegada</label><input id="f-in" name="entrada" type="date" required></div>
+                <div class="field"><label for="f-out">Salida</label><input id="f-out" name="salida" type="date" required></div>
+              </div>
+            </fieldset>
+            <fieldset class="ff-block">
+              <legend>Huéspedes</legend>
+              <div class="ff-row">
+                <div class="field stepper">
+                  <label for="f-adults">Adultos</label>
+                  <div class="stepper-ctl"><button type="button" data-step="-1" aria-label="Quitar un adulto">−</button><input id="f-adults" name="adultos" type="number" min="1" max="4" value="2" inputmode="numeric"><button type="button" data-step="1" aria-label="Añadir un adulto">+</button></div>
+                </div>
+                <div class="field stepper">
+                  <label for="f-kids">Niños</label>
+                  <div class="stepper-ctl"><button type="button" data-step="-1" aria-label="Quitar un niño">−</button><input id="f-kids" name="ninos" type="number" min="0" max="3" value="0" inputmode="numeric"><button type="button" data-step="1" aria-label="Añadir un niño">+</button></div>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="ff-block">
+              <legend>Presupuesto por noche</legend>
+              <div class="field range-field">
+                <label for="f-budget" class="sr-only">Presupuesto máximo por noche</label>
+                <input id="f-budget" name="presupuesto" type="range" min="3000" max="10000" step="100" value="6000" aria-describedby="f-budget-out">
+                <output id="f-budget-out" for="f-budget" data-budget-out>hasta $6,000 MXN</output>
+              </div>
+            </fieldset>
+            <fieldset class="ff-block ff-wide">
+              <legend>Tipo de viaje</legend>
+              <div class="chips" role="radiogroup" aria-label="Tipo de viaje">
+                <label class="chip"><input type="radio" name="viaje" value="romantico" checked><span>Romántico</span></label>
+                <label class="chip"><input type="radio" name="viaje" value="familiar"><span>Familiar</span></label>
+                <label class="chip"><input type="radio" name="viaje" value="negocios"><span>Negocios</span></label>
+                <label class="chip"><input type="radio" name="viaje" value="aventura"><span>Aventura</span></label>
+                <label class="chip"><input type="radio" name="viaje" value="descanso"><span>Descanso</span></label>
+              </div>
+            </fieldset>
+            <fieldset class="ff-block ff-wide">
+              <legend>Preferencias <span class="muted">(opcional)</span></legend>
+              <div class="chips">
+                <label class="chip"><input type="checkbox" name="pref" value="vista"><span>Vista a la laguna</span></label>
+                <label class="chip"><input type="checkbox" name="pref" value="king"><span>Cama king size</span></label>
+                <label class="chip"><input type="checkbox" name="pref" value="balcon"><span>Balcón o terraza</span></label>
+                <label class="chip"><input type="checkbox" name="pref" value="desayuno"><span>Desayuno incluido</span></label>
+                <label class="chip"><input type="checkbox" name="pref" value="accesible"><span>Accesibilidad</span></label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="ff-actions">
+            <button class="btn btn-gold btn-lg" type="submit" data-finder-submit><svg class="ico"><use href="#i-spark"/></svg> Encontrar mi habitación</button>
+            <p class="ff-note">Disponibilidad y precios <strong>simulados con fines de demostración</strong>. No se realiza ninguna reserva ni cobro.</p>
+          </div>
+          <p class="form-error" role="alert" data-finder-error></p>
+        </form>
+
+        <div class="finder-results" data-finder-results aria-live="polite" hidden></div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCIAS ============ -->
+    <section class="experiences section" id="experiencias" aria-labelledby="exp-title">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow reveal">Experiencias y servicios</p>
+            <h2 id="exp-title" class="display reveal">Días que se miden en <em>tonos de azul</em></h2>
+          </div>
+          <p class="section-intro reveal">Una selección de lo que imaginamos para Siete Azules. <span class="badge-demo">Servicios de demostración</span></p>
+        </header>
+
+        <div class="exp-mosaic">
+          <article class="exp-card exp-lg reveal-img">
+            <img src="assets/img/restaurante.webp" alt="Mesas con mantel de lino bajo palapa iluminada por lámparas tejidas" width="1024" height="768" loading="lazy" decoding="async">
+            <div class="exp-copy"><p class="exp-kicker">Restaurante Ki'imak</p><h3>Cocina peninsular de autor</h3><p>Pesca del día, recado negro y maíz criollo, frente a la laguna al anochecer.</p></div>
+          </article>
+          <article class="exp-card reveal-img">
+            <img src="assets/img/spa.webp" alt="Cabina de spa con cama de masaje, cuenco de piedra con flores y vista a la vegetación" width="1024" height="768" loading="lazy" decoding="async">
+            <div class="exp-copy"><p class="exp-kicker">Spa Sak Ha</p><h3>Rituales mayas</h3><p>Masajes con aceites de la selva y temazcal bajo reserva.</p></div>
+          </article>
+          <article class="exp-card reveal-img">
+            <img src="assets/img/alberca.webp" alt="Alberca infinita que se funde con la laguna turquesa" width="1280" height="720" loading="lazy" decoding="async">
+            <div class="exp-copy"><p class="exp-kicker">Alberca infinita</p><h3>Agua sobre agua</h3><p>Camastros de lino y servicio de bebidas al atardecer.</p></div>
+          </article>
+        </div>
+
+        <ul class="amenities" aria-label="Servicios incluidos (ejemplo)">
+          <li class="reveal"><span class="am-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.6.8-.6 1.7 0 2.5M11 3.5c-.6.8-.6 1.7 0 2.5"/></svg></span><div><h3>Desayuno de mercado</h3><p>Frutas, panadería y platillos regionales.</p></div></li>
+          <li class="reveal"><span class="am-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c3 2.5 15 2.5 18 0M6 15l2-3h8l2 3M12 12V4M9.5 19.5l5-15"/></svg></span><div><h3>Kayak y paddle</h3><p>Equipo de cortesía para remar al amanecer.</p></div></li>
+          <li class="reveal"><span class="am-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 8v5M7 11l5 2 5-2M5 19c2-1.5 4.5-2 7-2s5 .5 7 2M9 17l3-4 3 4"/></svg></span><div><h3>Gimnasio y yoga</h3><p>Deck abierto y clases guiadas al amanecer.</p></div></li>
+          <li class="reveal"><span class="am-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16V8a2 2 0 0 1 2-2h10l4 4.5V16zM3 11h16M8 6v5"/><circle cx="7.5" cy="17" r="1.6"/><circle cx="16" cy="17" r="1.6"/></svg></span><div><h3>Traslados privados</h3><p>Desde Chetumal o Tulum, bajo solicitud.</p></div></li>
+          <li class="reveal"><span class="am-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9a12 12 0 0 1 17 0M6.5 12a8 8 0 0 1 11 0M9.5 15a4 4 0 0 1 5 0"/><circle cx="12" cy="18" r=".8"/></svg></span><div><h3>Wifi de alta velocidad</h3><p>En habitaciones y áreas comunes.</p></div></li>
+          <li class="reveal"><span class="am-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3"/></svg></span><div><h3>Estacionamiento</h3><p>Privado y sin costo para huéspedes.</p></div></li>
+          <li class="reveal"><span class="am-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19C5 10 10 5 19 5c0 9-5 14-14 14zM5 19l8-8"/></svg></span><div><h3>Excursiones</h3><p>Cenotes, Los Rápidos y Chacchoben.</p></div></li>
+          <li class="reveal"><span class="am-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="7.5" width="17" height="11" rx="2"/><path d="M9 7.5V6a1.5 1.5 0 0 1 1.5-1.5h3A1.5 1.5 0 0 1 15 6v1.5M3.5 12.5h17"/></svg></span><div><h3>Viajes de trabajo</h3><p>Escritorios, salón privado y factura.</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ GALERÍA ============ -->
+    <section class="gallery section section-sand" id="galeria" aria-labelledby="gal-title">
+      <div class="container">
+        <header class="section-head">
+          <div>
+            <p class="eyebrow reveal">Galería</p>
+            <h2 id="gal-title" class="display reveal">Un recorrido en silencio</h2>
+          </div>
+          <p class="section-intro reveal">Toca cualquier imagen para verla a pantalla completa. <span class="badge-demo">Ilustraciones provisionales</span> Se sustituirán por fotografías generadas con IA.</p>
+        </header>
+        <div class="gallery-grid" data-gallery>
+          <button class="g-item g-wide" type="button" data-full="assets/img/hero.webp" data-caption="Muelle y palapa al atardecer"><img src="assets/img/hero.webp" alt="Muelle con palapa sobre la laguna al atardecer" width="1680" height="944" loading="lazy" decoding="async"><span class="g-zoom"><svg class="ico"><use href="#i-expand"/></svg></span></button>
+          <button class="g-item g-tall" type="button" data-full="assets/img/spa.webp" data-caption="Spa Sak Ha"><img src="assets/img/spa.webp" alt="Cabina del spa con luz natural entre palmas" width="1024" height="768" loading="lazy" decoding="async"><span class="g-zoom"><svg class="ico"><use href="#i-expand"/></svg></span></button>
+          <button class="g-item" type="button" data-full="assets/img/hab-deluxe.webp" data-caption="Deluxe Vista Laguna"><img src="assets/img/hab-deluxe.webp" alt="Habitación Deluxe con balcón a la laguna" width="1024" height="768" loading="lazy" decoding="async"><span class="g-zoom"><svg class="ico"><use href="#i-expand"/></svg></span></button>
+          <button class="g-item" type="button" data-full="assets/img/restaurante.webp" data-caption="Restaurante Ki'imak"><img src="assets/img/restaurante.webp" alt="Restaurante bajo palapa al anochecer" width="1024" height="768" loading="lazy" decoding="async"><span class="g-zoom"><svg class="ico"><use href="#i-expand"/></svg></span></button>
+          <button class="g-item g-wide" type="button" data-full="assets/img/alberca.webp" data-caption="Alberca infinita"><img src="assets/img/alberca.webp" alt="Alberca infinita frente a la laguna" width="1280" height="720" loading="lazy" decoding="async"><span class="g-zoom"><svg class="ico"><use href="#i-expand"/></svg></span></button>
+          <button class="g-item" type="button" data-full="assets/img/hab-palafito.webp" data-caption="Suite Palafito"><img src="assets/img/hab-palafito.webp" alt="Suite Palafito con tina exenta" width="1024" height="768" loading="lazy" decoding="async"><span class="g-zoom"><svg class="ico"><use href="#i-expand"/></svg></span></button>
+          <button class="g-item" type="button" data-full="assets/img/hab-familiar.webp" data-caption="Suite Familiar Selva"><img src="assets/img/hab-familiar.webp" alt="Suite familiar con hamaca y terraza" width="1024" height="768" loading="lazy" decoding="async"><span class="g-zoom"><svg class="ico"><use href="#i-expand"/></svg></span></button>
+          <button class="g-item" type="button" data-full="assets/img/hab-jardin.webp" data-caption="Habitación Jardín"><img src="assets/img/hab-jardin.webp" alt="Habitación Jardín con cabecera de ratán" width="1024" height="768" loading="lazy" decoding="async"><span class="g-zoom"><svg class="ico"><use href="#i-expand"/></svg></span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIOS ============ -->
+    <section class="testimonials section" id="testimonios" aria-labelledby="tst-title">
+      <div class="container">
+        <header class="section-head section-head-center">
+          <p class="eyebrow reveal">Testimonios</p>
+          <h2 id="tst-title" class="display reveal">Así se vería la voz de tus huéspedes</h2>
+          <p class="tst-disclaimer reveal"><strong>Ejemplos de demostración.</strong> Estos textos son ficticios: no son reseñas verificadas ni opiniones de clientes reales.</p>
+        </header>
+        <div class="tst-track" data-tst>
+          <figure class="tst-card reveal">
+            <span class="tst-demo">Ejemplo</span>
+            <blockquote>“Remamos en kayak al amanecer y desayunamos en la terraza del palafito. Fue el aniversario que soñábamos.”</blockquote>
+            <figcaption><span class="tst-name">Pareja de ejemplo</span><span class="tst-meta">Viaje romántico · Suite Palafito</span></figcaption>
+          </figure>
+          <figure class="tst-card reveal">
+            <span class="tst-demo">Ejemplo</span>
+            <blockquote>“Los niños no querían salir de la alberca y nosotros por fin descansamos. La suite familiar tiene espacio de sobra.”</blockquote>
+            <figcaption><span class="tst-name">Familia de ejemplo</span><span class="tst-meta">Viaje familiar · Suite Familiar Selva</span></figcaption>
+          </figure>
+          <figure class="tst-card reveal">
+            <span class="tst-demo">Ejemplo</span>
+            <blockquote>“Buen wifi, escritorio con vista y un café excelente. Trabajé tres días y me fui más descansado de lo que llegué.”</blockquote>
+            <figcaption><span class="tst-name">Viajero de negocios de ejemplo</span><span class="tst-meta">Negocios · Deluxe Vista Laguna</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CÓMO RESERVAR ============ -->
+    <section class="howto section section-sand" id="reservar" aria-labelledby="how-title">
+      <div class="container">
+        <header class="section-head section-head-center">
+          <p class="eyebrow reveal">Cómo reservar</p>
+          <h2 id="how-title" class="display reveal">Tres pasos, sin sorpresas</h2>
+        </header>
+        <ol class="steps">
+          <li class="step reveal"><span class="step-num">1</span><h3>Elige fechas y huéspedes</h3><p>Indica tu llegada, salida y quién viaja contigo en el buscador.</p></li>
+          <li class="step reveal"><span class="step-num">2</span><h3>Compara habitaciones</h3><p>Revisa opciones, precios orientativos y por qué encajan contigo.</p></li>
+          <li class="step reveal"><span class="step-num">3</span><h3>Solicita tu reserva</h3><p>Envía tu solicitud y el equipo te confirma por correo o WhatsApp. Más adelante, aquí se conectará el sistema de reservaciones del hotel.</p></li>
+        </ol>
+        <div class="trust-row reveal">
+          <span><svg class="ico"><use href="#i-check"/></svg> Sin cobros en línea en esta demo</span>
+          <span><svg class="ico"><use href="#i-check"/></svg> Tus datos solo se usan para responderte</span>
+          <span><svg class="ico"><use href="#i-check"/></svg> Respuesta personal, no automática</span>
+        </div>
+        <div class="center reveal"><a href="#buscador" class="btn btn-ink">Empezar ahora <svg class="ico"><use href="#i-arrow"/></svg></a></div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="faq section" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <header class="faq-head">
+          <p class="eyebrow reveal">Preguntas frecuentes</p>
+          <h2 id="faq-title" class="display reveal">Todo claro antes de llegar</h2>
+          <p class="reveal">Respuestas <strong>de ejemplo</strong>: el hotel debe confirmar sus políticas reales antes de publicar.</p>
+          <a href="#contacto" class="btn btn-outline reveal">Tengo otra pregunta</a>
+        </header>
+        <div class="faq-list">
+          <details class="reveal"><summary>¿A qué hora son la entrada y la salida?</summary><div><p>Entrada a partir de las 15:00 h y salida hasta las 12:00 h. Entrada anticipada y salida tardía según disponibilidad. <em class="ex">(Ejemplo)</em></p></div></details>
+          <details class="reveal"><summary>¿Cuál es la política de cancelación?</summary><div><p>Cancelación sin costo hasta 7 días antes de la llegada; después se cobra la primera noche. <em class="ex">(Ejemplo)</em></p></div></details>
+          <details class="reveal"><summary>¿Qué métodos de pago aceptan?</summary><div><p>Tarjetas Visa, Mastercard y American Express, y transferencia bancaria. <em class="ex">(Ejemplo)</em></p></div></details>
+          <details class="reveal"><summary>¿Puedo viajar con mi mascota?</summary><div><p>Se aceptan perros pequeños (hasta 10 kg) en Habitación Jardín con aviso previo y cargo de limpieza. <em class="ex">(Ejemplo)</em></p></div></details>
+          <details class="reveal"><summary>¿Hay estacionamiento?</summary><div><p>Sí, estacionamiento privado sin costo para huéspedes. <em class="ex">(Ejemplo)</em></p></div></details>
+          <details class="reveal"><summary>¿El desayuno está incluido?</summary><div><p>Incluido en Deluxe y suites. En Habitación Jardín es opcional ($380 MXN por persona). <em class="ex">(Ejemplo)</em></p></div></details>
+          <details class="reveal"><summary>¿Puedo agregar huéspedes adicionales?</summary><div><p>Niños menores de 6 años sin costo compartiendo cama; persona adicional $650 MXN por noche, según la capacidad de la habitación. <em class="ex">(Ejemplo)</em></p></div></details>
+          <details class="reveal"><summary>¿Cómo modifico mi reserva?</summary><div><p>Cambios de fecha sin costo hasta 7 días antes, sujetos a disponibilidad. Escríbenos por correo o WhatsApp con tu número de solicitud. <em class="ex">(Ejemplo)</em></p></div></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ UBICACIÓN ============ -->
+    <section class="location section section-ink" id="ubicacion" aria-labelledby="loc-title">
+      <div class="container loc-grid">
+        <div class="loc-text">
+          <p class="eyebrow eyebrow-gold reveal">Ubicación</p>
+          <h2 id="loc-title" class="display reveal">En la orilla sur de la <em>Laguna de Bacalar</em></h2>
+          <p class="reveal">Un Pueblo Mágico a medio camino entre la Riviera Maya y Belice. <span class="badge-demo badge-demo-dark">Ubicación de demostración</span></p>
+          <ul class="loc-list">
+            <li class="reveal"><span>Cenote Azul</span><span>5 min</span></li>
+            <li class="reveal"><span>Fuerte de San Felipe y centro</span><span>8 min</span></li>
+            <li class="reveal"><span>Canal de los Piratas (en lancha)</span><span>20 min</span></li>
+            <li class="reveal"><span>Los Rápidos de Bacalar</span><span>30 min</span></li>
+            <li class="reveal"><span>Zona arqueológica de Chacchoben</span><span>45 min</span></li>
+            <li class="reveal"><span>Aeropuerto Internacional de Chetumal</span><span>40 min</span></li>
+            <li class="reveal"><span>Aeropuerto Internacional de Tulum</span><span>2 h 30 min</span></li>
+          </ul>
+          <p class="muted-light reveal">Tiempos aproximados en auto. Cómo llegar: desde Chetumal por la carretera federal 307 hacia el norte; desde Tulum por la misma carretera hacia el sur. Ofrecemos traslados privados bajo solicitud (servicio de ejemplo).</p>
+        </div>
+        <div class="loc-map reveal">
+          <div id="mapa" class="map" role="region" aria-label="Mapa interactivo con la ubicación de demostración del hotel"></div>
+          <noscript><p class="map-fallback">Activa JavaScript para ver el mapa interactivo.</p></noscript>
+          <p class="map-note">Marcador aproximado con fines de demostración. Mapa © colaboradores de OpenStreetMap.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="contact section" id="contacto" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <p class="eyebrow reveal">Contacto</p>
+          <h2 id="contact-title" class="display reveal">Hablemos de tu próxima <em>escapada</em></h2>
+          <p class="reveal">Escríbenos para consultar una estancia, pedir una cotización para grupos o recibir ofertas exclusivas.</p>
+          <ul class="contact-list">
+            <li class="reveal"><svg class="ico"><use href="#i-phone"/></svg><div><span class="cl-label">Teléfono <em class="ex">(demo)</em></span><a href="tel:+529830000000">+52 983 000 0000</a></div></li>
+            <li class="reveal"><svg class="ico"><use href="#i-mail"/></svg><div><span class="cl-label">Correo <em class="ex">(demo)</em></span><a href="mailto:reservas@siete-azules.example">reservas@siete-azules.example</a></div></li>
+            <li class="reveal"><svg class="ico"><use href="#i-pin"/></svg><div><span class="cl-label">Dirección <em class="ex">(demo)</em></span><span>Av. Costera de Bacalar, Quintana Roo, México</span></div></li>
+          </ul>
+          <a class="btn btn-whatsapp reveal" href="https://wa.me/529830000000?text=Hola%2C%20quiero%20consultar%20disponibilidad%20en%20Siete%20Azules" target="_blank" rel="noopener"><svg class="ico"><use href="#i-whatsapp"/></svg> WhatsApp <small>(número de demostración)</small></a>
+          <div class="socials reveal" aria-label="Redes sociales (enlaces de ejemplo)">
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram (ejemplo)"><svg class="ico"><use href="#i-ig"/></svg></a>
+            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook (ejemplo)"><svg class="ico"><use href="#i-fb"/></svg></a>
+            <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok (ejemplo)"><svg class="ico"><use href="#i-tt"/></svg></a>
+          </div>
+        </div>
+
+        <form class="contact-form card-form reveal" data-lead-form="contacto" novalidate>
+          <h3 class="form-title">Solicitar información</h3>
+          <div class="seg" role="radiogroup" aria-label="Motivo">
+            <label><input type="radio" name="motivo" value="estancia" checked><span>Consultar estancia</span></label>
+            <label><input type="radio" name="motivo" value="informacion"><span>Información</span></label>
+            <label><input type="radio" name="motivo" value="ofertas"><span>Recibir ofertas</span></label>
+          </div>
+          <div class="field"><label for="c-name">Nombre <span aria-hidden="true">*</span></label><input id="c-name" name="nombre" type="text" autocomplete="name" required maxlength="80"></div>
+          <div class="ff-row">
+            <div class="field"><label for="c-email">Correo electrónico <span aria-hidden="true">*</span></label><input id="c-email" name="email" type="email" autocomplete="email" required maxlength="120"></div>
+            <div class="field"><label for="c-phone">Teléfono <span class="muted">(opcional)</span></label><input id="c-phone" name="telefono" type="tel" autocomplete="tel" maxlength="25" inputmode="tel"></div>
+          </div>
+          <div class="ff-row" data-stay-fields>
+            <div class="field"><label for="c-in">Llegada <span class="muted">(opcional)</span></label><input id="c-in" name="entrada" type="date"></div>
+            <div class="field"><label for="c-out">Salida <span class="muted">(opcional)</span></label><input id="c-out" name="salida" type="date"></div>
+          </div>
+          <div class="field"><label for="c-msg">Mensaje <span class="muted">(opcional)</span></label><textarea id="c-msg" name="mensaje" rows="3" maxlength="1000" placeholder="Cuéntanos qué tipo de viaje planeas"></textarea></div>
+          <div class="hp" aria-hidden="true"><label for="c-web">No llenar</label><input id="c-web" name="sitio_web" type="text" tabindex="-1" autocomplete="off"></div>
+          <label class="check"><input type="checkbox" name="consentimiento" value="1" required><span>Acepto el <a href="privacidad.html" target="_blank">aviso de privacidad</a> y que el hotel use mis datos para responder a esta solicitud. <span aria-hidden="true">*</span></span></label>
+          <label class="check"><input type="checkbox" name="marketing" value="1"><span>Quiero recibir ofertas ocasionales por correo (opcional).</span></label>
+          <button class="btn btn-ink btn-block" type="submit">Enviar solicitud <svg class="ico"><use href="#i-send"/></svg></button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- CTA final -->
+    <section class="final-cta" aria-labelledby="final-title">
+      <div class="final-media"><img src="assets/img/alberca.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"></div>
+      <div class="container final-inner">
+        <h2 id="final-title" class="display reveal">La laguna te espera.</h2>
+        <p class="reveal">Consulta fechas o déjanos tu correo y te enviamos ofertas exclusivas.</p>
+        <form class="newsletter reveal" data-lead-form="ofertas" novalidate>
+          <label for="n-email" class="sr-only">Correo electrónico</label>
+          <input id="n-email" name="email" type="email" placeholder="tu@correo.com" autocomplete="email" required maxlength="120">
+          <input type="hidden" name="motivo" value="ofertas">
+          <input type="hidden" name="marketing" value="1">
+          <div class="hp" aria-hidden="true"><input name="sitio_web" type="text" tabindex="-1" autocomplete="off"></div>
+          <button class="btn btn-gold" type="submit">Recibir ofertas</button>
+          <label class="check check-light"><input type="checkbox" name="consentimiento" value="1" required><span>Acepto el <a href="privacidad.html" target="_blank">aviso de privacidad</a>.</span></label>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="brand-name">Siete Azules</p>
+        <p class="brand-sub">Hotel de Laguna · Bacalar</p>
+        <p class="footer-claim">Donde la laguna cambia de color siete veces al día.</p>
+      </div>
+      <nav aria-label="Pie de página">
+        <h3>Explorar</h3>
+        <a href="#hotel">El hotel</a><a href="#habitaciones">Habitaciones</a><a href="#experiencias">Experiencias</a><a href="#galeria">Galería</a><a href="#faq">Preguntas frecuentes</a>
+      </nav>
+      <div>
+        <h3>Contacto <em class="ex">(demo)</em></h3>
+        <a href="tel:+529830000000">+52 983 000 0000</a>
+        <a href="mailto:reservas@siete-azules.example">reservas@siete-azules.example</a>
+        <a href="https://wa.me/529830000000" target="_blank" rel="noopener">WhatsApp</a>
+        <div class="socials socials-footer">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram (ejemplo)"><svg class="ico"><use href="#i-ig"/></svg></a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook (ejemplo)"><svg class="ico"><use href="#i-fb"/></svg></a>
+          <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok (ejemplo)"><svg class="ico"><use href="#i-tt"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <a href="privacidad.html">Aviso de privacidad</a>
+        <a href="condiciones.html">Condiciones de reserva (demo)</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Siete Azules — Hotel ficticio creado como demostración comercial de diseño web. No acepta reservas reales.</p>
+      <p>Imágenes: ilustraciones provisionales de demostración.</p>
+    </div>
+  </footer>
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lightbox" data-lightbox role="dialog" aria-modal="true" aria-label="Galería a pantalla completa" hidden>
+    <button class="lb-close" type="button" data-lb-close aria-label="Cerrar galería"><svg class="ico"><use href="#i-close"/></svg></button>
+    <button class="lb-nav lb-prev" type="button" data-lb-prev aria-label="Foto anterior"><svg class="ico flip"><use href="#i-arrow"/></svg></button>
+    <figure class="lb-figure"><img src="" alt="" data-lb-img><figcaption data-lb-cap></figcaption></figure>
+    <button class="lb-nav lb-next" type="button" data-lb-next aria-label="Foto siguiente"><svg class="ico"><use href="#i-arrow"/></svg></button>
+  </div>
+
+  <!-- ============ ASISTENTE VIRTUAL ============ -->
+  <button class="chat-fab" type="button" data-chat-open aria-controls="chat-panel" aria-expanded="false">
+    <svg class="ico"><use href="#i-chat"/></svg><span class="chat-fab-label">Concierge virtual</span>
+  </button>
+  <section class="chat-panel" id="chat-panel" data-chat role="dialog" aria-modal="false" aria-labelledby="chat-title" hidden>
+    <header class="chat-head">
+      <div class="chat-avatar" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M7 21c3-2.2 6-2.2 9 0s6 2.2 9 0 6-2.2 9 0M9 26c2.7-1.8 5.4-1.8 8 0s5.4 1.8 8 0 5.4-1.8 7.5 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+      <div>
+        <h2 id="chat-title">Itzel · Concierge virtual</h2>
+        <p class="chat-sub"><span class="dot"></span>Asistente con IA · respuestas de demostración</p>
+      </div>
+      <button type="button" class="chat-close" data-chat-close aria-label="Cerrar asistente"><svg class="ico"><use href="#i-close"/></svg></button>
+    </header>
+    <div class="chat-log" data-chat-log aria-live="polite">
+      <div class="msg msg-bot"><p>¡Hola! Soy Itzel, la concierge virtual de Siete Azules. Puedo ayudarte a elegir habitación, resolver dudas sobre el hotel o recomendarte experiencias. ¿Qué viaje estás planeando?</p></div>
+    </div>
+    <div class="chat-suggest" data-chat-suggest>
+      <button type="button">Viajo en pareja, ¿qué suite me recomiendas?</button>
+      <button type="button">Somos 2 adultos y 2 niños</button>
+      <button type="button">¿Cómo llego desde Tulum?</button>
+    </div>
+    <form class="chat-form" data-chat-form>
+      <label for="chat-input" class="sr-only">Escribe tu mensaje</label>
+      <input id="chat-input" name="mensaje" type="text" maxlength="500" placeholder="Escribe tu pregunta…" autocomplete="off" required>
+      <button type="submit" aria-label="Enviar mensaje"><svg class="ico"><use href="#i-send"/></svg></button>
+    </form>
+    <p class="chat-legal">La IA puede equivocarse. No confirma reservas, precios ni disponibilidad. <a href="privacidad.html" target="_blank">Privacidad</a></p>
+  </section>
+
+  <script defer src="lib/leaflet.js"></script>
+  <script defer src="main.js?v=20261013"></script>
+</body>
+</html>
