@@ -33,8 +33,83 @@
     $$("a[href^='https://wa.me/']").forEach(function (a) { a.target = "_blank"; a.rel = "noopener"; });
     // muestra el número de config.js en contacto: +52 55 1234 5678
     var n = String(cfg.whatsapp).replace(/\D/g, "");
-    var m = n.match(/^52(?:1)?(\d{2})(\d{4})(\d{4})$/);
-    $$("[data-wa-number]").forEach(function (el) { el.textContent = m ? "+52 " + m[1] + " " + m[2] + " " + m[3] : "+" + n; });
+    var m = n.match(/^52(?:1)?(\d{10})$/), shown = "+" + n;
+    if (m) {
+      var d = m[1], two = /^(55|33|81)/.test(d); // CDMX, GDL y MTY usan lada de 2 dígitos
+      shown = two ? "+52 " + d.slice(0, 2) + " " + d.slice(2, 6) + " " + d.slice(6) : "+52 " + d.slice(0, 3) + " " + d.slice(3, 6) + " " + d.slice(6);
+    }
+    $$("[data-wa-number]").forEach(function (el) { el.textContent = shown; });
+  }
+
+
+  /* ---------- Formulario de pedido personalizado ----------
+     No guarda nada: solo arma el texto y abre WhatsApp. */
+  function initOrderForm() {
+    var form = $("[data-order-form]"); if (!form) return;
+    var preview = $("[data-preview]"), counter = $("[data-count-ded]");
+    var fecha = form.elements.fecha;
+    var today = new Date(); today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+    fecha.min = today.toISOString().slice(0, 10);
+
+    function niceDate(v) {
+      if (!v) return "";
+      var p = v.split("-"), d = new Date(+p[0], +p[1] - 1, +p[2]);
+      try { return d.toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" }); } catch (_) { return v; }
+    }
+    function list(arr) {
+      if (arr.length < 2) return arr.join("");
+      return arr.slice(0, -1).join(", ") + " y " + arr[arr.length - 1];
+    }
+    function data() {
+      var el = form.elements, checked = $$("input[name='colores']:checked", form).map(function (i) { return i.value; });
+      var oc = $("input[name='ocasion']:checked", form);
+      return {
+        ocasion: oc ? oc.value : "", presupuesto: el.presupuesto.value, arreglo: el.arreglo.value,
+        fecha: niceDate(el.fecha.value), horario: el.horario.value, colores: list(checked),
+        zona: el.zona.value.trim(), dedicatoria: el.dedicatoria.value.trim()
+      };
+    }
+    function message(d) {
+      var lines = [cfg.mensajePersonalizado || "Hola, me gustaría hacer un pedido personalizado:", ""];
+      if (d.ocasion) lines.push("• Ocasión: " + d.ocasion);
+      if (d.presupuesto) lines.push("• Presupuesto: " + d.presupuesto);
+      if (d.arreglo) lines.push("• Arreglo de referencia: " + d.arreglo);
+      if (d.fecha) lines.push("• Fecha de entrega: " + d.fecha + (d.horario ? " · " + d.horario : ""));
+      else if (d.horario) lines.push("• Horario: " + d.horario);
+      if (d.colores) lines.push("• Colores: " + d.colores);
+      if (d.zona) lines.push("• Zona de entrega: " + d.zona);
+      if (d.dedicatoria) lines.push("• Dedicatoria: \u201C" + d.dedicatoria + "\u201D");
+      lines.push("", "¿Me ayudan con opciones y disponibilidad? Gracias.");
+      return lines.join("\n");
+    }
+    function update() {
+      if (counter) counter.textContent = form.elements.dedicatoria.value.length;
+      if (!preview) return;
+      preview.textContent = message(data());
+      preview.classList.remove("bump"); void preview.offsetWidth; preview.classList.add("bump");
+    }
+    function setError(name, on) {
+      var box = $("[data-error='" + name + "']", form);
+      if (box) box.closest(".field").classList.toggle("has-error", on);
+    }
+    form.addEventListener("input", function (e) {
+      if (e.target.name === "ocasion") setError("ocasion", false);
+      if (e.target.name === "fecha") setError("fecha", false);
+      update();
+    });
+    form.addEventListener("change", update);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var d = data(), bad = null;
+      setError("ocasion", !d.ocasion); if (!d.ocasion) bad = bad || $("input[name='ocasion']", form);
+      setError("fecha", !d.fecha); if (!d.fecha) bad = bad || fecha;
+      if (bad) { bad.focus({ preventScroll: true }); bad.closest(".field").scrollIntoView({ behavior: "smooth", block: "center" }); return; }
+      var url = waUrl(message(d));
+      // con "noopener" window.open devuelve null siempre, por eso se corta el vínculo a mano
+      var w = window.open(url, "_blank");
+      if (w) { try { w.opener = null; } catch (_) {} } else { window.location.href = url; }
+    });
+    update();
   }
 
   /* ---------- Intro con doble red de seguridad ---------- */
@@ -290,6 +365,7 @@
     safe(initNav, "nav");
     safe(initReveals, "reveals");
     safe(initFilter, "filter");
+    safe(initOrderForm, "orderForm");
     safe(initTilt, "tilt");
     safe(initMagnetic, "magnetic");
     safe(initCount, "count");
