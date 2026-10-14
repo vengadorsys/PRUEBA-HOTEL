@@ -1,0 +1,128 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=Pinyon+Script&display=swap">
+<style>
+:root{--cream:#f7f1e8;--paper:#fffdf9;--ink:#2f332b;--soft:#6a7063;--sage:#8a9a7b;--sage-d:#4f5d47;--peach:#e7a98f;--peach-d:#c97c62;--blush:#f2d3c8;--line:rgba(47,51,43,.12);--wa:#1f9d55}
+*{box-sizing:border-box;margin:0}
+body{width:1536px;height:1024px;overflow:hidden;font-family:Manrope,sans-serif;color:var(--ink);
+background:radial-gradient(60% 70% at 100% 0%,#f6dccf 0,transparent 70%),radial-gradient(50% 60% at 0% 100%,#dfe6d4 0,transparent 70%),var(--cream);position:relative}
+.sprig{position:absolute;opacity:.9}
+.left{position:absolute;left:88px;top:78px;width:470px}
+.eyebrow{font-size:15px;letter-spacing:.32em;text-transform:uppercase;color:var(--peach-d);font-weight:600}
+h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:76px;line-height:.98;margin:22px 0 22px;letter-spacing:-.01em}
+h1 em{color:var(--peach-d);font-weight:400}
+.lead{font-size:19px;line-height:1.55;color:var(--soft)}
+.lead b{color:var(--ink);font-weight:600}
+ul{list-style:none;padding:0;margin-top:30px;display:grid;gap:16px}
+li{display:flex;gap:16px;align-items:center}
+.ic{flex:none;width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--paper);box-shadow:0 10px 24px -14px rgba(79,93,71,.5);color:var(--peach-d)}
+.ic.g{color:var(--sage-d)}
+.ic svg{width:25px;height:25px}
+li strong{display:block;font-size:17px;font-weight:600}
+li span{font-size:14.5px;color:var(--soft)}
+.script{font-family:'Pinyon Script',cursive;font-size:38px;color:var(--peach-d);margin-top:26px;display:flex;align-items:center;gap:10px}
+/* form card */
+.card{position:absolute;left:612px;top:96px;width:540px;height:836px;background:var(--paper);border-radius:30px;box-shadow:0 50px 90px -40px rgba(79,93,71,.45),0 1px 0 var(--line);overflow:hidden}
+.head{position:relative;height:250px;padding:40px 36px;background:linear-gradient(120deg,#fbefe8 40%,transparent 75%)}
+.head img{position:absolute;right:0;top:0;width:260px;height:250px;object-fit:cover;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 45%);mask-image:linear-gradient(90deg,transparent 0,#000 45%)}
+.head h2{position:relative;z-index:1;font-family:'Cormorant Garamond',serif;font-weight:500;font-size:40px;line-height:1.02;width:260px}
+.head h2 em{color:var(--peach-d)}
+.head p{position:relative;font-size:14px;color:var(--soft);width:250px;margin-top:12px;line-height:1.5}
+.brand{position:relative;margin-top:16px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--sage-d);font-weight:700}
+form{padding:26px 36px 0;display:grid;gap:17px}
+.f label{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px;margin-bottom:8px}
+.f label svg{width:20px;height:20px;color:var(--sage-d)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{padding:8px 13px;border-radius:999px;font-size:13px;background:#f5efe6;color:var(--ink)}
+.chip.on{background:var(--sage-d);color:#fff}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.in{height:44px;border-radius:12px;border:1px solid var(--line);background:#fffaf4;display:flex;align-items:center;justify-content:space-between;padding:0 14px;font-size:14px}
+.in small{color:var(--soft)}
+.sw{display:flex;gap:11px;align-items:center}
+.sw i{width:34px;height:34px;border-radius:50%;display:block;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.sw i.on{box-shadow:0 0 0 3px var(--paper),0 0 0 5px var(--peach-d)}
+.ta{border-radius:12px;border:1px solid var(--line);background:#fffaf4;padding:12px 14px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;height:70px;color:var(--ink)}
+.btn{margin-top:6px;height:56px;border-radius:999px;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:16.5px;box-shadow:0 18px 32px -16px rgba(31,157,85,.8)}
+.btn svg{width:22px;height:22px}
+.safe{text-align:center;font-size:12.5px;color:var(--soft);margin-top:-4px}
+/* phone */
+.phone{position:absolute;left:1166px;top:150px;width:340px;height:740px;border-radius:52px;background:#1f231d;padding:13px;box-shadow:0 60px 90px -40px rgba(47,51,43,.7),inset 0 0 0 2px #3a4036}
+.scr{width:100%;height:100%;border-radius:40px;overflow:hidden;background:#ece5dc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='10' cy='10' r='1.4' fill='%23d8cfc2'/%3E%3Ccircle cx='40' cy='35' r='1.4' fill='%23d8cfc2'/%3E%3C/svg%3E");position:relative}
+.notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:100px;height:26px;border-radius:20px;background:#1f231d;z-index:3}
+.status{position:absolute;top:13px;left:28px;right:24px;display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#fff;z-index:2}
+.wh{background:#2c5d48;color:#fff;padding:48px 16px 12px;display:flex;align-items:center;gap:10px}
+.av{width:38px;height:38px;border-radius:50%;background:var(--blush);display:grid;place-items:center;color:var(--peach-d);font-size:18px}
+.wh b{font-size:14.5px;display:block}.wh small{font-size:11.5px;opacity:.8}
+.msgs{padding:14px 10px;display:flex;flex-direction:column;gap:9px}
+.m{position:relative;max-width:88%;padding:9px 11px 18px;border-radius:13px;font-size:12.6px;line-height:1.42;box-shadow:0 1px 1px rgba(0,0,0,.08)}
+.m time{position:absolute;right:9px;bottom:4px;font-size:10px;color:#7a7f75}
+.out{align-self:flex-end;background:#d9fdd3;border-top-right-radius:4px}
+.in2{align-self:flex-start;background:#fff;border-top-left-radius:4px}
+.out ul{margin:6px 0 0;gap:2px;padding-left:0}
+.out li{display:block;font-size:12.4px}
+.out li b{font-weight:700}
+.ph{padding:4px 4px 18px;width:210px}
+.ph img{width:100%;height:150px;object-fit:cover;border-radius:10px;display:block}
+.ph div{padding:7px 7px 0;font-size:12.6px}
+.ph div b{display:block}
+.ph div span{color:#6b7067}
+.bar{position:absolute;left:8px;right:8px;bottom:10px;display:flex;gap:7px;align-items:center}
+.bar .t{flex:1;height:40px;border-radius:999px;background:#fff;font-size:12.5px;color:#8a8f86;display:flex;align-items:center;padding:0 14px}
+.bar .mic{width:40px;height:40px;border-radius:50%;background:var(--wa);display:grid;place-items:center;color:#fff}
+.tagdemo{position:absolute;right:28px;bottom:20px;font-size:12px;color:var(--soft);letter-spacing:.04em}
+.arrow{position:absolute;left:1120px;top:600px}
+</style></head><body>
+
+<svg class="sprig" style="left:-60px;bottom:-70px;width:210px" viewBox="0 0 200 220"><path d="M20 220C40 150 80 90 150 30" stroke="#5f6f55" stroke-width="2" fill="none"/><g fill="#9fb0a2" opacity=".85"><ellipse cx="42" cy="170" rx="18" ry="10" transform="rotate(-40 42 170)"/><ellipse cx="70" cy="150" rx="16" ry="9" transform="rotate(30 70 150)"/><ellipse cx="72" cy="120" rx="18" ry="10" transform="rotate(-40 72 120)"/><ellipse cx="102" cy="100" rx="16" ry="9" transform="rotate(30 102 100)"/><ellipse cx="108" cy="70" rx="16" ry="9" transform="rotate(-40 108 70)"/><ellipse cx="134" cy="54" rx="14" ry="8" transform="rotate(30 134 54)"/></g><circle cx="150" cy="30" r="14" fill="#f2c6b8"/><circle cx="150" cy="30" r="7" fill="#e7a98f"/></svg>
+<svg class="sprig" style="right:-20px;top:-30px;width:220px;transform:rotate(160deg)" viewBox="0 0 200 220"><path d="M20 220C40 150 80 90 150 30" stroke="#5f6f55" stroke-width="2" fill="none"/><g fill="#b7c3a8"><ellipse cx="42" cy="170" rx="18" ry="10" transform="rotate(-40 42 170)"/><ellipse cx="70" cy="150" rx="16" ry="9" transform="rotate(30 70 150)"/><ellipse cx="72" cy="120" rx="18" ry="10" transform="rotate(-40 72 120)"/><ellipse cx="102" cy="100" rx="16" ry="9" transform="rotate(30 102 100)"/><ellipse cx="108" cy="70" rx="16" ry="9" transform="rotate(-40 108 70)"/></g><circle cx="150" cy="30" r="16" fill="#f6dcd2"/><circle cx="150" cy="30" r="8" fill="#e7a98f"/></svg>
+
+<div class="left">
+  <p class="eyebrow">Personalización del pedido</p>
+  <h1>Cada detalle<br><em>hace la diferencia</em></h1>
+  <p class="lead">Tu cliente elige <b>ocasión, presupuesto, fecha, colores y dedicatoria</b> en un formulario sencillo… y llega a WhatsApp con el pedido ya escrito.</p>
+  <ul>
+    <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18M12 8v13M12 8C10 4 6 4 7 7s5 1 5 1 4 2 5-1-3-3-5 1"/></svg></span><div><strong>Ocasión</strong><span>Cumpleaños, aniversario, bodas, condolencias…</span></div></li>
+    <li><span class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M16 13h2M3 10h18M7 6V4h10v2"/></svg></span><div><strong>Presupuesto</strong><span>El rango de precio que mejor le acomode.</span></div></li>
+    <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2"/></svg></span><div><strong>Fecha de entrega</strong><span>Cuándo y a qué hora debe llegar.</span></div></li>
+    <li><span class="ic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 2-2s-1-1.5-1-2.5 1-1.5 2-1.5h2a4 4 0 0 0 4-4c0-4.4-4-8-9-8Z"/><circle cx="7.5" cy="11" r="1.2"/><circle cx="10" cy="7" r="1.2"/><circle cx="15" cy="7" r="1.2"/></svg></span><div><strong>Colores</strong><span>Los tonos favoritos de quien lo recibe.</span></div></li>
+    <li><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></span><div><strong>Dedicatoria</strong><span>Un mensaje especial, escrito a mano en la tarjeta.</span></div></li>
+  </ul>
+  <p class="script">Tu pedido, tal como lo imaginas <span style="font-family:Manrope;font-size:22px">♡</span></p>
+</div>
+
+<div class="card">
+  <div class="head">
+    <img src="../assets/img/rosas.webp" alt="">
+    <h2>Arreglos florales <em>a tu medida</em></h2>
+    <p>Cuéntanos qué necesitas y nosotros lo hacemos realidad.</p>
+    <p class="brand">✿ Salvia &amp; Durazno</p>
+  </div>
+  <form>
+    <div class="f"><label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M3 12h18M12 8v13"/></svg>¿Para qué ocasión es?</label>
+      <div class="chips"><span class="chip">Cumpleaños</span><span class="chip on">Aniversario</span><span class="chip">Amor</span><span class="chip">Felicitaciones</span><span class="chip">Bodas</span><span class="chip">Condolencias</span></div></div>
+    <div class="row">
+      <div class="f"><label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="14" rx="3"/><path d="M16 13h2M3 10h18"/></svg>Presupuesto</label><div class="in">$1,000 – $1,500 <small>▾</small></div></div>
+      <div class="f"><label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Fecha de entrega</label><div class="in">14 de febrero <small>📅</small></div></div>
+    </div>
+    <div class="f"><label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3a9 9 0 1 0 0 18c1.5 0 2-1 2-2s-1-1.5-1-2.5 1-1.5 2-1.5h2a4 4 0 0 0 4-4c0-4.4-4-8-9-8Z"/></svg>Colores de preferencia</label>
+      <div class="sw"><i class="on" style="background:#f2b6c0"></i><i style="background:#f6c9a6"></i><i style="background:#c9b6dc"></i><i style="background:#f6dc8a"></i><i class="on" style="background:#fbf6ee"></i><i style="background:#8a9a7b"></i><i style="background:#c4505a"></i></div></div>
+    <div class="f"><label><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>Dedicatoria <span style="font-weight:400;color:var(--soft)">(opcional)</span></label>
+      <div class="ta">“Gracias por estar siempre. Te amo.”</div></div>
+    <div class="btn"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm4.52 11.99c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></svg>Continuar en WhatsApp →</div>
+    <p class="safe">Sin registro ni cuentas · el pedido se confirma por WhatsApp</p>
+  </form>
+</div>
+
+<div class="phone"><div class="scr">
+  <div class="notch"></div><div class="status"><span>9:41</span><span>●●● ▮</span></div>
+  <div class="wh"><span style="font-size:18px">‹</span><span class="av">✿</span><div><b>Salvia &amp; Durazno</b><small>en línea</small></div></div>
+  <div class="msgs">
+    <div class="m out">Hola, me gustaría hacer un pedido con estas características:
+      <ul><li>• <b>Ocasión:</b> Aniversario</li><li>• <b>Presupuesto:</b> $1,000 – $1,500</li><li>• <b>Fecha:</b> 14 de febrero</li><li>• <b>Colores:</b> rosa y blanco</li><li>• <b>Dedicatoria:</b> “Gracias por estar siempre. Te amo.”</li></ul><time>9:41 ✓✓</time></div>
+    <div class="m in2">¡Perfecto! 🌸 Te proponemos este arreglo para la ocasión:<time>9:42</time></div>
+    <div class="m in2 ph"><img src="../assets/img/rosas.webp" alt=""><div><b>Arreglo Rosa Durazno</b><span>$1,290 MXN</span></div><time>9:42</time></div>
+  </div>
+  <div class="bar"><span class="t">Escribe un mensaje</span><span class="mic">🎙</span></div>
+</div></div>
+
+<p class="tagdemo">Concepto de demostración · nombres y precios de ejemplo</p>
+</body></html>
