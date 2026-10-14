@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Salvia &amp; Durazno · Atelier floral (demo)</title>
+  <meta name="description" content="Ramos y arreglos florales hechos a mano con entrega a domicilio. Pide en minutos por WhatsApp: cumpleaños, amor, felicitaciones, bodas y condolencias. Sitio de demostración.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f7f1e8">
+  <meta property="og:title" content="Salvia & Durazno · Atelier floral">
+  <meta property="og:description" content="Flores frescas, diseñadas a mano y entregadas a domicilio. Pide por WhatsApp.">
+  <meta property="og:image" content="assets/img/hero.webp">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600&display=swap">
+  <link rel="preload" as="image" href="assets/img/hero.webp" fetchpriority="high">
+  <link rel="stylesheet" href="styles.css?v=20261014">
+  <script defer src="lib/gsap.min.js"></script>
+  <script defer src="lib/ScrollTrigger.min.js"></script>
+  <script defer src="config.js?v=20261014"></script>
+  <script defer src="main.js?v=20261014"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <!-- Intro -->
+  <div class="splash" aria-hidden="true">
+    <svg class="splash-bloom" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.2">
+        <path pathLength="1" d="M60 60 C40 40 40 14 60 8 C80 14 80 40 60 60Z"/>
+        <path pathLength="1" d="M60 60 C80 40 106 40 112 60 C106 80 80 80 60 60Z"/>
+        <path pathLength="1" d="M60 60 C80 80 80 106 60 112 C40 106 40 80 60 60Z"/>
+        <path pathLength="1" d="M60 60 C40 80 14 80 8 60 C14 40 40 40 60 60Z"/>
+      </g>
+      <circle cx="60" cy="60" r="5" fill="currentColor"/>
+    </svg>
+    <p class="splash-word">Salvia <em>&amp;</em> Durazno</p>
+  </div>
+
+  <div class="demo-ribbon" role="note">
+    <span>Sitio de demostración</span> · nombres, precios, opiniones y datos de contacto son <strong>de ejemplo</strong>
+  </div>
+
+  <div class="progress" aria-hidden="true"><span></span></div>
+
+  <header class="nav" data-nav>
+    <div class="nav-inner container">
+      <a class="brand" href="#inicio" aria-label="Salvia & Durazno, inicio">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M20 36 C20 26 20 18 20 6" stroke="currentColor" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+          <path d="M20 24 C12 22 8 16 9 10 C16 11 20 16 20 24Z" fill="var(--sage)"/>
+          <path d="M20 18 C27 16 31 11 30 5 C23 6 20 11 20 18Z" fill="var(--sage-l)"/>
+          <circle cx="20" cy="6" r="4" fill="var(--peach)"/>
+        </svg>
+        <span class="brand-name">Salvia <em>&amp;</em> Durazno</span>
+      </a>
+      <nav class="nav-links" aria-label="Principal" data-menu>
+        <a href="#arreglos">Arreglos</a>
+        <a href="#nosotros">Por qué elegirnos</a>
+        <a href="#como-pedir">Cómo pedir</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="#contacto">Contacto</a>
+        <a class="btn btn-wa btn-sm nav-menu-cta" href="#contacto" data-wa>Pedir por WhatsApp</a>
+      </nav>
+      <a class="btn btn-wa btn-sm nav-cta" href="#contacto" data-wa>
+        <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg><span>Pedir</span>
+      </a>
+      <button class="burger" type="button" aria-label="Abrir menú" aria-expanded="false" data-burger><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+      <canvas class="petals" aria-hidden="true"></canvas>
+      <div class="hero-grid container">
+        <div class="hero-copy">
+          <p class="eyebrow reveal"><span class="dot"></span> Atelier floral · Entrega a domicilio</p>
+          <h1 class="hero-title" data-split>
+            Flores que dicen <em>lo que sientes</em> y llegan a tu puerta.
+          </h1>
+          <p class="hero-sub reveal">Ramos y arreglos diseñados a mano con flor fresca del día. Elige, escríbenos por WhatsApp y nosotros nos encargamos del resto.</p>
+          <div class="hero-ctas reveal">
+            <a class="btn btn-wa btn-lg magnetic" href="#contacto" data-wa>
+              <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>
+              Pedir por WhatsApp
+            </a>
+            <a class="btn btn-ghost btn-lg" href="#arreglos">Ver arreglos <span aria-hidden="true">→</span></a>
+          </div>
+          <ul class="hero-trust reveal" aria-label="Ventajas">
+            <li><strong>Mismo día</strong><span>pedidos antes de las 14 h*</span></li>
+            <li><strong>Tarjeta gratis</strong><span>con tu dedicatoria</span></li>
+            <li><strong>100 % a mano</strong><span>en nuestro taller</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-visual">
+          <figure class="hero-arch">
+            <img src="assets/img/hero.webp" alt="Ramo de rosas de jardín, ranúnculos color durazno y eucalipto sobre mantel de lino" width="1192" height="672" fetchpriority="high" loading="eager" data-parallax>
+          </figure>
+          <figure class="hero-mini">
+            <img src="assets/img/rosas.webp" alt="Detalle de rosas rosa empolvado y ranúnculos durazno" width="800" height="1000" loading="eager">
+          </figure>
+          <div class="hero-badge" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <defs><path id="circ" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0"/></defs>
+              <text><textPath href="#circ">hecho a mano · flor fresca · con cariño · </textPath></text>
+            </svg>
+            <span>✿</span>
+          </div>
+          <p class="hero-note">* Horarios y zonas de ejemplo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-label="Ocasiones">
+      <div class="marquee-track">
+        <span>Cumpleaños</span><i>✿</i><span>Aniversarios</span><i>✿</i><span>San Valentín</span><i>✿</i><span>Día de las Madres</span><i>✿</i><span>Bodas</span><i>✿</i><span>Eventos</span><i>✿</i><span>Condolencias</span><i>✿</i><span>Solo porque sí</span><i>✿</i>
+        <span aria-hidden="true">Cumpleaños</span><i>✿</i><span aria-hidden="true">Aniversarios</span><i>✿</i><span aria-hidden="true">San Valentín</span><i>✿</i><span aria-hidden="true">Día de las Madres</span><i>✿</i><span aria-hidden="true">Bodas</span><i>✿</i><span aria-hidden="true">Eventos</span><i>✿</i><span aria-hidden="true">Condolencias</span><i>✿</i><span aria-hidden="true">Solo porque sí</span><i>✿</i>
+      </div>
+    </div>
+
+    <!-- ============ CATÁLOGO ============ -->
+    <section class="section catalog" id="arreglos">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow reveal">Catálogo · precios de ejemplo</p>
+          <h2 class="section-title" data-split>Ramos y arreglos <em>para cada ocasión</em></h2>
+          <p class="section-lead reveal">Cada pieza se arma a mano el día de la entrega. Elige uno y pídelo en un toque: te confirmamos disponibilidad por WhatsApp.</p>
+        </header>
+
+        <div class="chips reveal" role="tablist" aria-label="Filtrar por ocasión" data-chips>
+          <button class="chip is-active" role="tab" aria-selected="true" data-filter="todos">Todos</button>
+          <button class="chip" role="tab" aria-selected="false" data-filter="cumpleanos">Cumpleaños</button>
+          <button class="chip" role="tab" aria-selected="false" data-filter="amor">Amor</button>
+          <button class="chip" role="tab" aria-selected="false" data-filter="felicitaciones">Felicitaciones</button>
+          <button class="chip" role="tab" aria-selected="false" data-filter="bodas">Eventos y bodas</button>
+          <button class="chip" role="tab" aria-selected="false" data-filter="condolencias">Condolencias</button>
+        </div>
+
+        <p class="swipe-hint" aria-hidden="true">Desliza para ver más <span>→</span></p>
+        <div class="products" data-products>
+          <article class="product" data-cat="cumpleanos" style="--tint:#f6ead2">
+            <div class="product-media" data-tilt><img src="assets/img/arreglo-sol-de-domingo.svg" alt="Ilustración del ramo Sol de Domingo: ranúnculos amarillos, rosas durazno y margaritas" loading="lazy" width="400" height="500"></div>
+            <div class="product-body">
+              <p class="product-tag">Cumpleaños</p>
+              <h3 class="product-name">Sol de Domingo</h3>
+              <p class="product-desc">Ranúnculos amarillos, rosas durazno y margaritas en papel crema. Alegre y luminoso.</p>
+              <div class="product-foot">
+                <p class="product-price"><span>desde</span> $890 <small>MXN · ejemplo</small></p>
+                <a class="btn btn-wa btn-sm" href="#contacto" data-wa-product="Sol de Domingo" data-price="desde $890 MXN"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir este arreglo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="cumpleanos" style="--tint:#f8e3d6">
+            <div class="product-media" data-tilt><img src="assets/img/arreglo-dulce-durazno.svg" alt="Ilustración de la caja Dulce Durazno con rosas durazno y ranúnculos" loading="lazy" width="400" height="500"></div>
+            <div class="product-body">
+              <p class="product-tag">Cumpleaños</p>
+              <h3 class="product-name">Dulce Durazno</h3>
+              <p class="product-desc">Caja sombrerera con rosas durazno, ranúnculos y eucalipto. Lista para sorprender.</p>
+              <div class="product-foot">
+                <p class="product-price"><span>desde</span> $1,150 <small>MXN · ejemplo</small></p>
+                <a class="btn btn-wa btn-sm" href="#contacto" data-wa-product="Dulce Durazno" data-price="desde $1,150 MXN"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir este arreglo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="amor" style="--tint:#f5dcd8">
+            <div class="product-media" data-tilt><img src="assets/img/arreglo-pasion-carmesi.svg" alt="Ilustración del ramo Pasión Carmesí: rosas rojas y rosa empolvado" loading="lazy" width="400" height="500"></div>
+            <div class="product-body">
+              <p class="product-tag">Amor · Aniversario</p>
+              <h3 class="product-name">Pasión Carmesí</h3>
+              <p class="product-desc">Dos docenas de rosas rojas y rosa empolvado con nube y listón de satín.</p>
+              <div class="product-foot">
+                <p class="product-price"><span>desde</span> $1,490 <small>MXN · ejemplo</small></p>
+                <a class="btn btn-wa btn-sm" href="#contacto" data-wa-product="Pasión Carmesí" data-price="desde $1,490 MXN"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir este arreglo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="amor" style="--tint:#f6e0e2">
+            <div class="product-media" data-tilt><img src="assets/img/arreglo-petit-amour.svg" alt="Ilustración del arreglo Petit Amour: peonías rosas en florero de cerámica" loading="lazy" width="400" height="500"></div>
+            <div class="product-body">
+              <p class="product-tag">Amor · San Valentín</p>
+              <h3 class="product-name">Petit Amour</h3>
+              <p class="product-desc">Peonías y rosas de jardín en florero de cerámica rosa. El florero se queda de recuerdo.</p>
+              <div class="product-foot">
+                <p class="product-price"><span>desde</span> $1,290 <small>MXN · ejemplo</small></p>
+                <a class="btn btn-wa btn-sm" href="#contacto" data-wa-product="Petit Amour" data-price="desde $1,290 MXN"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir este arreglo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="felicitaciones" style="--tint:#e6ebdf">
+            <div class="product-media" data-tilt><img src="assets/img/arreglo-jardin-salvia.svg" alt="Ilustración del arreglo Jardín Salvia: flores mixtas en florero verde salvia" loading="lazy" width="400" height="500"></div>
+            <div class="product-body">
+              <p class="product-tag">Felicitaciones · Día de las Madres</p>
+              <h3 class="product-name">Jardín Salvia</h3>
+              <p class="product-desc">Rosas crema, ranúnculos y margaritas en florero verde salvia. Como recién cortado del jardín.</p>
+              <div class="product-foot">
+                <p class="product-price"><span>desde</span> $990 <small>MXN · ejemplo</small></p>
+                <a class="btn btn-wa btn-sm" href="#contacto" data-wa-product="Jardín Salvia" data-price="desde $990 MXN"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir este arreglo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="felicitaciones" style="--tint:#efe9e1">
+            <div class="product-media" data-tilt><img src="assets/img/arreglo-orquidea-nube.svg" alt="Ilustración de la orquídea blanca Nube en maceta" loading="lazy" width="400" height="500"></div>
+            <div class="product-body">
+              <p class="product-tag">Felicitaciones · Nuevo hogar</p>
+              <h3 class="product-name">Orquídea Nube</h3>
+              <p class="product-desc">Orquídea phalaenopsis blanca de dos varas en maceta de barro. Dura semanas.</p>
+              <div class="product-foot">
+                <p class="product-price"><span>desde</span> $1,050 <small>MXN · ejemplo</small></p>
+                <a class="btn btn-wa btn-sm" href="#contacto" data-wa-product="Orquídea Nube" data-price="desde $1,050 MXN"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir este arreglo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="bodas" style="--tint:#f3eee6">
+            <div class="product-media" data-tilt><img src="assets/img/arreglo-novia-marfil.svg" alt="Ilustración del ramo de novia Marfil con peonías, rosas blancas y eucalipto" loading="lazy" width="400" height="500"></div>
+            <div class="product-body">
+              <p class="product-tag">Bodas</p>
+              <h3 class="product-name">Novia Marfil</h3>
+              <p class="product-desc">Ramo de novia en tonos marfil con peonías, rosas y eucalipto. Lo ajustamos a tu vestido.</p>
+              <div class="product-foot">
+                <p class="product-price"><span>desde</span> $2,400 <small>MXN · ejemplo</small></p>
+                <a class="btn btn-wa btn-sm" href="#contacto" data-wa-product="Novia Marfil" data-price="desde $2,400 MXN"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir este arreglo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="bodas" style="--tint:#e9ece2">
+            <div class="product-media" data-tilt><img src="assets/img/arreglo-mesa-campestre.svg" alt="Ilustración del centro de mesa Campestre con flores y velas" loading="lazy" width="400" height="500"></div>
+            <div class="product-body">
+              <p class="product-tag">Eventos · Centros de mesa</p>
+              <h3 class="product-name">Mesa Campestre</h3>
+              <p class="product-desc">Centro de mesa bajo con follaje, rosas y velas. Cotizamos por volumen para tu evento.</p>
+              <div class="product-foot">
+                <p class="product-price"><span>desde</span> $780 <small>MXN c/u · ejemplo</small></p>
+                <a class="btn btn-wa btn-sm" href="#contacto" data-wa-product="Mesa Campestre" data-price="desde $780 MXN c/u"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir este arreglo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="condolencias" style="--tint:#eceee8">
+            <div class="product-media" data-tilt><img src="assets/img/arreglo-paz-serena.svg" alt="Ilustración del arreglo Paz Serena: lirios y rosas blancas en florero" loading="lazy" width="400" height="500"></div>
+            <div class="product-body">
+              <p class="product-tag">Condolencias</p>
+              <h3 class="product-name">Paz Serena</h3>
+              <p class="product-desc">Lirios y rosas blancas en florero sobrio. Un abrazo silencioso para la familia.</p>
+              <div class="product-foot">
+                <p class="product-price"><span>desde</span> $1,190 <small>MXN · ejemplo</small></p>
+                <a class="btn btn-wa btn-sm" href="#contacto" data-wa-product="Paz Serena" data-price="desde $1,190 MXN"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir este arreglo</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="product" data-cat="condolencias" style="--tint:#e8ebe4">
+            <div class="product-media" data-tilt><img src="assets/img/arreglo-corona-luz.svg" alt="Ilustración de la corona fúnebre Luz con follaje, lirios y rosas blancas" loading="lazy" width="400" height="500"></div>
+            <div class="product-body">
+              <p class="product-tag">Condolencias · Corona</p>
+              <h3 class="product-name">Corona Luz</h3>
+              <p class="product-desc">Corona de follaje con lirios y rosas blancas, con base. Entrega directa en funeraria.</p>
+              <div class="product-foot">
+                <p class="product-price"><span>desde</span> $2,100 <small>MXN · ejemplo</small></p>
+                <a class="btn btn-wa btn-sm" href="#contacto" data-wa-product="Corona Luz" data-price="desde $2,100 MXN"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Pedir este arreglo</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="catalog-note">Ilustraciones provisionales: se sustituirán por fotografías reales de cada arreglo.</p>
+
+        <aside class="custom-cta reveal">
+          <div>
+            <h3>¿Buscas algo distinto?</h3>
+            <p>Cuéntanos la ocasión, colores favoritos y presupuesto. Diseñamos un arreglo a tu medida.</p>
+          </div>
+          <a class="btn btn-wa" href="#contacto" data-wa-text="Hola, quiero un arreglo personalizado. La ocasión es: ___ · Colores: ___ · Presupuesto aprox.: ___">
+            <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Diseñar el mío
+          </a>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ POR QUÉ ELEGIRNOS ============ -->
+    <section class="section why" id="nosotros">
+      <div class="container why-grid">
+        <div class="why-visual">
+          <figure class="why-photo clip-reveal">
+            <img src="assets/img/taller.webp" alt="Manos de florista atando un ramo de rosas durazno y eucalipto en el taller" loading="lazy" width="774" height="1032" data-parallax-soft>
+          </figure>
+          <div class="why-stamp" aria-hidden="true">
+            <strong data-count="12">12</strong>
+            <span>años creando<br>ramos (ejemplo)</span>
+          </div>
+        </div>
+        <div class="why-copy">
+          <p class="eyebrow reveal">Por qué elegirnos</p>
+          <h2 class="section-title" data-split>Detalles que se <em>notan</em> y se sienten</h2>
+          <ul class="features">
+            <li class="feature reveal">
+              <span class="feature-ico"><svg aria-hidden="true"><use href="#i-leaf"/></svg></span>
+              <div><h3>Flores frescas</h3><p>Compramos flor de temporada cada mañana. Lo que recibes se armó el mismo día.</p></div>
+            </li>
+            <li class="feature reveal">
+              <span class="feature-ico"><svg aria-hidden="true"><use href="#i-hand"/></svg></span>
+              <div><h3>Diseño a mano</h3><p>Cada ramo es único: lo arman nuestras floristas, sin moldes ni piezas en serie.</p></div>
+            </li>
+            <li class="feature reveal">
+              <span class="feature-ico"><svg aria-hidden="true"><use href="#i-truck"/></svg></span>
+              <div><h3>Entrega a domicilio</h3><p>Llevamos tu arreglo a casas, oficinas, hospitales y salones, con cuidado y a tiempo.</p></div>
+            </li>
+            <li class="feature reveal">
+              <span class="feature-ico"><svg aria-hidden="true"><use href="#i-heart"/></svg></span>
+              <div><h3>Pedidos personalizados</h3><p>Colores, flores, tamaño y presupuesto a tu gusto. Y la tarjeta con tu dedicatoria va de regalo.</p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CÓMO PEDIR ============ -->
+    <section class="section how" id="como-pedir">
+      <div class="container how-grid">
+        <div class="how-copy">
+          <p class="eyebrow reveal">Cómo pedir</p>
+          <h2 class="section-title" data-split>Tres pasos, <em>cero complicaciones</em></h2>
+          <ol class="steps">
+            <li class="step reveal">
+              <span class="step-n">01</span>
+              <div><h3>Elige tu arreglo</h3><p>Explora el catálogo por ocasión o pídenos uno a tu medida.</p></div>
+            </li>
+            <li class="step reveal">
+              <span class="step-n">02</span>
+              <div><h3>Escríbenos por WhatsApp</h3><p>El mensaje ya va escrito: solo dinos fecha, dirección y la dedicatoria.</p></div>
+            </li>
+            <li class="step reveal">
+              <span class="step-n">03</span>
+              <div><h3>Confirmamos y lo entregamos</h3><p>Te confirmamos el pedido y la forma de pago, y te avisamos cuando se entregue.</p></div>
+            </li>
+          </ol>
+          <a class="btn btn-wa btn-lg magnetic reveal" href="#contacto" data-wa>
+            <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Empezar mi pedido
+          </a>
+        </div>
+
+        <div class="phone reveal" aria-label="Ejemplo de conversación por WhatsApp">
+          <div class="phone-notch" aria-hidden="true"></div>
+          <div class="chat-head">
+            <span class="chat-avatar" aria-hidden="true">✿</span>
+            <div><strong>Salvia &amp; Durazno</strong><small>en línea</small></div>
+          </div>
+          <div class="chat" data-chat>
+            <p class="msg msg-out">Hola, me interesa el arreglo «Dulce Durazno», ¿está disponible? <time>10:02</time></p>
+            <p class="msg msg-in">¡Hola! 🌸 Sí, lo tenemos hoy. ¿Para qué día y a qué dirección lo enviamos? <time>10:03</time></p>
+            <p class="msg msg-out">Para hoy en la tarde, es para el cumpleaños de mi mamá 💛 <time>10:04</time></p>
+            <p class="msg msg-in">¡Qué bonito! ¿Qué dedicatoria le ponemos en la tarjeta? <time>10:04</time></p>
+            <p class="msg msg-in msg-photo"><img src="assets/img/cumple.webp" alt="" loading="lazy" width="774" height="1032"><span>Así quedó tu ramo ✨ Va en camino.</span><time>16:20</time></p>
+          </div>
+          <p class="chat-note">Conversación de ejemplo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIOS ============ -->
+    <section class="section reviews" id="opiniones">
+      <div class="container">
+        <header class="section-head center">
+          <p class="eyebrow reveal">Opiniones</p>
+          <h2 class="section-title" data-split>Lo que cuentan <em>quienes regalaron</em></h2>
+          <p class="demo-tag reveal">Testimonios de ejemplo · se reemplazarán por opiniones reales de clientes</p>
+        </header>
+        <div class="reviews-track" data-reviews>
+          <figure class="review">
+            <div class="stars" aria-label="5 de 5">★★★★★</div>
+            <blockquote>“Pedí unas rosas para nuestro aniversario a las 11 y a las 4 ya estaban en su oficina. Mi esposa me mandó foto llorando de la emoción.”</blockquote>
+            <figcaption><strong>Carlos M.</strong><span>Aniversario · ejemplo</span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" aria-label="5 de 5">★★★★★</div>
+            <blockquote>“Vivo fuera y quería sorprender a mi mamá el 10 de mayo. Me mandaron foto del ramo antes de salir. Atención súper cálida por WhatsApp.”</blockquote>
+            <figcaption><strong>Daniela R.</strong><span>Día de las Madres · ejemplo</span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" aria-label="5 de 5">★★★★★</div>
+            <blockquote>“Hicieron mi ramo de novia y los centros de mesa. Entendieron perfecto la paleta durazno y salvia que buscaba. Todo precioso.”</blockquote>
+            <figcaption><strong>Mariana L.</strong><span>Boda · ejemplo</span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" aria-label="5 de 5">★★★★★</div>
+            <blockquote>“En un momento difícil me ayudaron con la corona para la funeraria con mucha delicadeza y rapidez. Se los agradezco de corazón.”</blockquote>
+            <figcaption><strong>José A.</strong><span>Condolencias · ejemplo</span></figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" aria-label="5 de 5">★★★★★</div>
+            <blockquote>“El ramo de cumpleaños duró casi dos semanas. Se nota que la flor es fresca. Ya es mi florería de confianza.”</blockquote>
+            <figcaption><strong>Fernanda G.</strong><span>Cumpleaños · ejemplo</span></figcaption>
+          </figure>
+        </div>
+        <div class="reviews-nav">
+          <button class="round-btn" type="button" aria-label="Opinión anterior" data-rev-prev>←</button>
+          <button class="round-btn" type="button" aria-label="Opinión siguiente" data-rev-next>→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section faq" id="preguntas">
+      <div class="container faq-grid">
+        <header class="section-head">
+          <p class="eyebrow reveal">Preguntas frecuentes</p>
+          <h2 class="section-title" data-split>Todo lo que <em>necesitas saber</em></h2>
+          <p class="section-lead reveal">¿Otra duda? Escríbenos y te respondemos enseguida.</p>
+          <a class="btn btn-ghost reveal" href="#contacto" data-wa-text="Hola, tengo una pregunta sobre un pedido:">Preguntar por WhatsApp</a>
+        </header>
+        <div class="faq-list">
+          <details class="qa reveal" open>
+            <summary>¿A qué zonas entregan y en qué horario?</summary>
+            <div class="qa-body"><p>Entregamos en toda la ciudad y zona metropolitana, de lunes a sábado de 9:00 a 19:00 h y domingos de 10:00 a 14:00 h. El costo de envío depende de la colonia; te lo confirmamos por WhatsApp antes de cerrar el pedido. <em>(Zonas, horarios y costos de ejemplo.)</em></p></div>
+          </details>
+          <details class="qa reveal">
+            <summary>¿Con cuánta anticipación debo pedir?</summary>
+            <div class="qa-body"><p>Para entrega el mismo día, pide antes de las 14:00 h. En fechas especiales (San Valentín, 10 de mayo) recomendamos reservar con 3 a 5 días. Para bodas y eventos, idealmente con 4 semanas.</p></div>
+          </details>
+          <details class="qa reveal">
+            <summary>¿Puedo personalizar mi arreglo?</summary>
+            <div class="qa-body"><p>¡Claro! Puedes elegir flores, colores, tamaño, tipo de envoltura o florero, y ajustar a tu presupuesto. Si tienes una foto de referencia, envíanosla por WhatsApp.</p></div>
+          </details>
+          <details class="qa reveal">
+            <summary>¿Qué formas de pago aceptan?</summary>
+            <div class="qa-body"><p>Transferencia bancaria, depósito y pago con tarjeta mediante liga de pago que te enviamos por WhatsApp. En tienda también aceptamos efectivo. <em>(Formas de pago de ejemplo.)</em></p></div>
+          </details>
+          <details class="qa reveal">
+            <summary>¿Incluyen tarjeta con dedicatoria?</summary>
+            <div class="qa-body"><p>Sí, todos los arreglos llevan tarjeta de regalo sin costo. Escríbenos el mensaje y lo pasamos a mano con letra bonita. También podemos enviarlo de forma anónima.</p></div>
+          </details>
+          <details class="qa reveal">
+            <summary>¿Qué pasa si la flor del catálogo no está disponible?</summary>
+            <div class="qa-body"><p>Trabajamos con flor de temporada. Si alguna variedad no está disponible, te proponemos una alternativa del mismo estilo y valor antes de confirmar.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section class="section contact" id="contacto">
+      <div class="container contact-grid">
+        <figure class="contact-photo clip-reveal">
+          <img src="assets/img/rosas.webp" alt="Ramo de rosas rosa empolvado y ranúnculos durazno con eucalipto" loading="lazy" width="800" height="1000">
+        </figure>
+        <div class="contact-card">
+          <p class="eyebrow reveal">Contacto · datos de ejemplo</p>
+          <h2 class="section-title" data-split>Visítanos o <em>escríbenos</em></h2>
+          <dl class="contact-list">
+            <div class="reveal">
+              <dt>Dirección</dt>
+              <dd>Calle de las Camelias 128, Col. Del Valle, Ciudad de México <small>(ejemplo)</small></dd>
+            </div>
+            <div class="reveal">
+              <dt>Horario</dt>
+              <dd>Lun a sáb · 9:00 – 19:00 h<br>Dom · 10:00 – 14:00 h <small>(ejemplo)</small></dd>
+            </div>
+            <div class="reveal">
+              <dt>WhatsApp</dt>
+              <dd><span data-wa-number>+52 55 0000 0000</span> <small>(número de ejemplo)</small></dd>
+            </div>
+          </dl>
+          <div class="contact-ctas reveal">
+            <a class="btn btn-wa btn-lg magnetic" href="#contacto" data-wa>
+              <svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg>Escribir por WhatsApp
+            </a>
+            <a class="btn btn-ghost btn-lg" href="https://www.google.com/maps/search/?api=1&amp;query=Calle+de+las+Camelias+128+Del+Valle+Ciudad+de+Mexico" target="_blank" rel="noopener">
+              <svg class="ico" aria-hidden="true"><use href="#i-pin"/></svg>Cómo llegar
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-brand">Salvia <em>&amp;</em> Durazno</p>
+        <p class="footer-tag">Atelier floral · flores frescas, hechas a mano, con cariño.</p>
+      </div>
+      <nav class="footer-links" aria-label="Pie de página">
+        <a href="#arreglos">Arreglos</a>
+        <a href="#como-pedir">Cómo pedir</a>
+        <a href="#preguntas">Preguntas</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <p class="footer-legal">Sitio de demostración. Nombre, precios, opiniones, dirección y teléfono son de ejemplo. Fotografías generadas con IA; ilustraciones del catálogo provisionales. © <span data-year>2026</span></p>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a class="wa-float" href="#contacto" data-wa aria-label="Pedir por WhatsApp">
+    <span class="wa-float-label">¿Te ayudamos a elegir?</span>
+    <span class="wa-float-btn"><svg aria-hidden="true"><use href="#i-wa"/></svg></span>
+  </a>
+
+  <!-- Iconos -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.17.24-.64.8-.78.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.42.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" d="M5 19C5 10 10 5 20 4c-1 10-6 15-15 15Zm0 0 8-8"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M12 3c-2 3-2 5 0 7 2-2 2-4 0-7Zm0 7v4m-6 7 2-5c.5-1.2 1.5-2 2.8-2H15a2 2 0 0 1 0 4h-3m-6 3h9l4-5"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M2 6h11v10H2zM13 9h4l4 4v3h-8M6 19a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm11 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M12 21s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  </svg>
+</body>
+</html>
